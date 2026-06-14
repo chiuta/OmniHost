@@ -45656,7 +45656,7 @@ function qrLoadJsQR(cb){
   if(_jsQRLoading){var w=setInterval(function(){if(_jsQRLoaded){clearInterval(w);cb(true)}},100);setTimeout(function(){clearInterval(w);cb(_jsQRLoaded)},8000);return;}
   _jsQRLoading=true;
   var s=document.createElement('script');
-  s.src='https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js';
+  s.src='./vendor/jsQR.js';
   s.onload=function(){_jsQRLoaded=typeof jsQR==='function';_jsQRLoading=false;cb(_jsQRLoaded)};
   s.onerror=function(){_jsQRLoading=false;cb(false)};
   document.head.appendChild(s);
