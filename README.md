@@ -44,8 +44,14 @@ Barele laterale grupează modulele (cu numărul de elemente afișat în aplicaț
   - `geocoding-api.open-meteo.com` și `api.open-meteo.com` — cardul de vreme de pe Dashboard: orașul este dedus din fusul orar al browserului, numele lui este trimis pentru geocodare, apoi coordonatele pentru prognoză; rezultatele se păstrează în cache 30 de minute;
   - `api.dictionaryapi.dev` — doar când folosiți căutarea în dicționar (cuvântul căutat; eventual sunetul de pronunție de pe același host);
   - `api.mymemory.translated.net` — doar când folosiți traducerea din Utilities (textul de tradus).
+- **Cererea pentru vreme pleacă automat la încărcarea Dashboardului** (fără clic), cât timp cardul de vreme este activ: către Open-Meteo pleacă numele orașului dedus din fusul orar și, ulterior, coordonatele lui. Verificat în browser (2026-10-10).
+- **Parole și secrete:** modulele Security/Passwords/TOTP păstrează datele ca text simplu în obiectul JSON din fișier și în `localStorage` (`omnihost_db`); modulul „Encrypt" este separat. Nu stocați aici parole importante pe un calculator partajat și nu distribuiți fișierul salvat.
 - Linkurile către alte site-uri (de ex. github.com, trade-free.org, apps.yunohost.org) se deschid doar la clic.
 - Fără analitice, cont sau server propriu.
+
+## Avertisment
+
+Instrument personal de organizare, cu caracter informativ. Modulele din grupele „Health" și „Finance" (jurnal de simptome, alergii, suplimente, calculatoare financiare, estimator de taxe etc.) nu oferă sfaturi medicale sau financiare și nu înlocuiesc un specialist. Citatele și textele-exemplu din wiki sunt conținut de demonstrație și nu au fost verificate pentru atribuire.
 
 ## Rulare locală / offline
 
@@ -54,6 +60,10 @@ Descărcați `index.html` (și folderul `vendor/`, care conține `jsQR.js` pentr
 ## Licență
 
 CC0 1.0 Universal (domeniu public) — vezi fișierul LICENSE
+
+## Audit
+
+2026-10-10: verificat în browser (0 erori JS; cerere de rețea automată la Dashboard către Open-Meteo). Corectat un XSS stocat (câmpurile `priority` din sarcini și `module` din feed) care putea fi declanșat printr-un import JSON malițios, plus accesibilitate (nume pentru controale, contrast, liste Markdown). Pagina „Licenses" din aplicație menționează „Unlicense", în timp ce antetul, README și LICENSE spun CC0 — de clarificat de autor.
 
 ## Autor
 
