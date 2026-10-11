@@ -67,7 +67,12 @@ CC0 1.0 Universal (domeniu public) — vezi fișierul LICENSE. Pagina „License
 
 ## Istoric / Changelog
 
-**Runda 6 — 11 octombrie 2026** (fără număr de versiune în aplicație). Ultima actualizare: 11 octombrie 2026.
+**Runda 7 — 11 octombrie 2026** (fără număr de versiune în aplicație). Ultima actualizare: 11 octombrie 2026.
+- Corectat: pe ecrane înguste, bannerul de donații acoperea nota de subsol din bara laterală deschisă (avertismentul „Personal organizer, informational only…”); bara laterală are acum spațiu jos pentru banner (și îl pierde dacă bannerul este ascuns).
+- Verificat, nereprodus: întârzierea evenimentului `load` în regim offline (în test, `load` se declanșează la ~0,9 s, rețeaua blocată).
+- Neschimbat: handlerele inline rămân (motivul din Runda 6 se menține).
+
+**Runda 6 — 11 octombrie 2026** (fără număr de versiune în aplicație).
 - Nou: comutator rapid de module — `Ctrl/Cmd+K` sau butonul 🔍 din bara de sus; caută printre cele 141 de module după nume sau grup, navigare cu ↑↓, Enter deschide. Tasta `Esc` închide acum orice dialog.
 - Encrypt / Decrypt: stare vizibilă (cu `aria-live`) sub câmpul de ieșire pentru succes/eșec, nu doar un toast.
 - Bara de sus se rupe pe două rânduri pe ecrane înguste (nu mai taie butoanele); conținutul are spațiu jos pentru butonul de donații.
