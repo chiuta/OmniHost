@@ -23,6 +23,7 @@ Barele laterale grupează modulele (cu numărul de elemente afișat în aplicaț
 - Cronologii (Univers, Galaxie, Sistem Solar, geologică, istorică etc.) și wiki încorporat cu ghiduri pentru module, în Notes.
 - 30 de teme vizuale și un „Custom Studio"; mod de editare a dashboardului (reordonare prin tragere, redimensionare).
 - Interfață în 71 de limbi, inclusiv română.
+- Comutator rapid de module (`Ctrl/Cmd+K`).
 - Export / import JSON, resetare la „Clean Quine", vizualizare a sursei și pagină „Licenses" (credite pentru componente, inclusiv jsQR și qrcodejs).
 
 ## Manual de utilizare
@@ -66,7 +67,13 @@ CC0 1.0 Universal (domeniu public) — vezi fișierul LICENSE. Pagina „License
 
 ## Istoric / Changelog
 
-**Runda 5 — 11 octombrie 2026** (fără număr de versiune în aplicație). Ultima actualizare: 11 octombrie 2026.
+**Runda 6 — 11 octombrie 2026** (fără număr de versiune în aplicație). Ultima actualizare: 11 octombrie 2026.
+- Nou: comutator rapid de module — `Ctrl/Cmd+K` sau butonul 🔍 din bara de sus; caută printre cele 141 de module după nume sau grup, navigare cu ↑↓, Enter deschide. Tasta `Esc` închide acum orice dialog.
+- Encrypt / Decrypt: stare vizibilă (cu `aria-live`) sub câmpul de ieșire pentru succes/eșec, nu doar un toast.
+- Bara de sus se rupe pe două rânduri pe ecrane înguste (nu mai taie butoanele); conținutul are spațiu jos pentru butonul de donații.
+- Neschimbat: handlerele inline (~1400) rămân — fișierul se salvează ca „quine” prin `outerHTML`, iar „minify” rescrie scriptul, deci un CSP pe hash ar invalida fișierele salvate.
+
+**Runda 5 — 11 octombrie 2026** (fără număr de versiune în aplicație).
 - Decriptarea cu parolă greșită golește acum câmpul de ieșire (nu mai rămâne textul vechi).
 - Mesajul de donații nu mai acoperă butonul de editare al dashboardului (butonul a fost mutat mai sus; conținutul are spațiu jos); mesajul este un reper `complementary`.
 - Accesibilitate: nume pentru selectorul de limbă, ordine corectă a titlurilor în calendar; axe-core = 0 violări la 1280 și 360 px.

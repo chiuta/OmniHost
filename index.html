@@ -85,7 +85,7 @@
 @keyframes deckSlideUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 @media(max-width:400px){.deck-card{flex:0 0 82px;height:95px}.deck-ico{font-size:1.3rem}.deck-lbl{font-size:.55rem}}
 
-@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}.pomo-ring,.logo-icon,.logo-text h1,.profile-avatar-lg,.sidebar-footer .avatar,.quine-info,.btn-primary,.stat-card::after,.nav-badge,.nav-item.active,.nav-item.active .nav-icon,.pomo-time,.empty-state .empty-icon,.portal-greeting,.portal-grid .portal-tile,.dash-editing .dash-widget{animation:none !important}}</style>
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}.pomo-ring,.logo-icon,.logo-text h1,.profile-avatar-lg,.sidebar-footer .avatar,.quine-info,.btn-primary,.stat-card::after,.nav-badge,.nav-item.active,.nav-item.active .nav-icon,.pomo-time,.empty-state .empty-icon,.portal-greeting,.portal-grid .portal-tile,.dash-editing .dash-widget{animation:none !important}}.oh-qs-in{width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--bg4);background:var(--bg);color:var(--fg);font-size:.95rem}.oh-qs-list{list-style:none;margin:10px 0 0;padding:0;max-height:50vh;overflow-y:auto}.oh-qs-item{display:flex;align-items:center;gap:10px;width:100%;text-align:left;padding:9px 10px;border-radius:9px;border:1px solid transparent;background:none;color:var(--fg);font-size:.85rem;cursor:pointer}.oh-qs-item:hover,.oh-qs-item.sel{background:var(--bg3);border-color:var(--accent)}.oh-qs-grp{margin-left:auto;font-size:.68rem;color:var(--fg2)}.oh-qs-hint{font-size:.72rem;color:var(--fg2);margin-top:8px}.content{padding-bottom:84px}.topbar-actions .oh-qs-btn{padding:4px 9px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);color:var(--fg2)}@media(max-width:600px){.topbar{padding:10px 12px;gap:8px;flex-wrap:wrap}.topbar-actions{margin-left:0;flex:1 1 100%;flex-wrap:wrap}}</style>
 </head>
 <body>
 
@@ -135,6 +135,7 @@
 <div class="topbar-actions">
 <select id="lang-switcher" onchange="DB.settings.lang=this.value;DB.settings._langManuallySet=true;persist();applyI18n();renderPage()" style="background:var(--bg3);border:1px solid var(--bg4);color:var(--fg2);padding:4px 6px;border-radius:var(--radius-sm);font-size:.7rem;cursor:pointer;max-width:90px" title="Interface language" aria-label="Interface language" class=""><option value="en" selected="">🇬🇧 English</option><option value="ro">🇷🇴 Română</option><option value="fr">🇫🇷 Français</option><option value="es">🇪🇸 Español</option><option value="de">🇩🇪 Deutsch</option><option value="pt">🇵🇹 Português</option><option value="it">🇮🇹 Italiano</option><option value="ja">🇯🇵 日本語</option><option value="zh">🇨🇳 中文</option><option value="ar">🇸🇦 العربية</option><option value="hi">🇮🇳 हिन्दी</option><option value="ko">🇰🇷 한국어</option><option value="ru">🇷🇺 Русский</option><option value="nl">🇳🇱 Nederlands</option><option value="pl">🇵🇱 Polski</option><option value="tr">🇹🇷 Türkçe</option><option value="sv">🇸🇪 Svenska</option><option value="uk">🇺🇦 Українська</option><option value="cs">🇨🇿 Čeština</option><option value="el">🇬🇷 Ελληνικά</option><option value="hu">🇭🇺 Magyar</option><option value="bg">🇧🇬 Български</option><option value="da">🇩🇰 Dansk</option><option value="fi">🇫🇮 Suomi</option><option value="no">🇳🇴 Norsk</option><option value="th">🇹🇭 ไทย</option><option value="vi">🇻🇳 Tiếng Việt</option><option value="id">🇮🇩 Bahasa Indonesia</option><option value="ms">🇲🇾 Bahasa Melayu</option><option value="he">🇮🇱 עברית</option><option value="fa">🇮🇷 فارسی</option><option value="sr">🇷🇸 Српски</option><option value="hr">🇭🇷 Hrvatski</option><option value="sk">🇸🇰 Slovenčina</option><option value="sl">🇸🇮 Slovenščina</option><option value="lt">🇱🇹 Lietuvių</option><option value="lv">🇱🇻 Latviešu</option><option value="et">🇪🇪 Eesti</option><option value="ka">🇬🇪 ქართული</option><option value="hy">🇦🇲 Հայերեն</option><option value="sw">🇹🇿 Kiswahili</option><option value="bn">🇧🇩 বাংলা</option><option value="ta">🇮🇳 தமிழ்</option><option value="te">🇮🇳 తెలుగు</option><option value="ml">🇮🇳 മലയാളം</option><option value="ur">🇵🇰 اردو</option><option value="tl">🇵🇭 Filipino</option><option value="ca">🏴 Català</option><option value="gl">🏴 Galego</option><option value="eu">🏴 Euskara</option><option value="af">🇿🇦 Afrikaans</option><option value="cy">🏴 Cymraeg</option><option value="ga">🇮🇪 Gaeilge</option><option value="is">🇮🇸 Íslenska</option><option value="mt">🇲🇹 Malti</option><option value="lb">🇱🇺 Lëtzebuergesch</option><option value="mk">🇲🇰 Македонски</option><option value="sq">🇦🇱 Shqip</option><option value="bs">🇧🇦 Bosanski</option><option value="mn">🇲🇳 Монгол</option><option value="ne">🇳🇵 नेपाली</option><option value="si">🇱🇰 සිංහල</option><option value="km">🇰🇭 ភាសាខ្មែរ</option><option value="lo">🇱🇦 ລາວ</option><option value="my">🇲🇲 မြန်မာ</option><option value="am">🇪🇹 አማርኛ</option><option value="zu">🇿🇦 isiZulu</option><option value="yo">🇳🇬 Yorùbá</option><option value="ig">🇳🇬 Igbo</option><option value="ha">🇳🇬 Hausa</option><option value="la">🏛️ Latina</option><option value="eo">🌍 Esperanto</option></select>
 <button id="theme-topbar-btn" onclick="toggleThemePopover(event)" title="Switch theme" style="display:inline-flex;align-items:center;gap:5px;padding:5px 11px;border-radius:10px;border:1px solid rgba(255,255,255,.1);color:var(--fg2);font-size:.72rem;font-weight:600;background:rgba(255,255,255,.03);cursor:pointer;transition:all .2s;user-select:none"><span id="theme-topbar-swatch" style="width:11px;height:11px;border-radius:50%;background:var(--accent);flex-shrink:0;display:inline-block;box-shadow:0 0 6px var(--accent)"></span><span id="theme-topbar-label">Theme</span><span id="theme-topbar-arrow" style="font-size:.55rem;opacity:.5;transition:transform .2s">▼</span></button>
+<button class="btn btn-sm oh-qs-btn" id="oh-qs-btn" type="button" title="Jump to module (Ctrl+K)" aria-label="Jump to module (Ctrl+K)">🔍</button>
 <button class="btn btn-ghost btn-sm" onclick="saveQuine()" title="Save file with all data embedded">💾 Save</button>
 <button class="btn btn-primary btn-sm" id="topbar-add" onclick="addNew()" style="">+ Add</button>
 </div>
@@ -2310,13 +2311,14 @@ function renderEncrypt(){
       <button class="btn btn-ghost" onclick="doDecrypt()">🔓 ${t('decrypt_btn')}</button>
       <button class="btn btn-ghost" onclick="navigator.clipboard.writeText(document.getElementById('enc-output').value);notify(t('copied'))">📋 ${t('copy_output')}</button>
     </div>
-    <div class="form-group"><label>${t('output_label')}</label><textarea id="enc-output" class="encrypt-area" readonly></textarea></div>
+    <div class="form-group"><label>${t('output_label')}</label><textarea id="enc-output" class="encrypt-area" readonly></textarea><p id="enc-status" role="status" aria-live="polite" style="font-size:.78rem;min-height:1.2em;margin-top:6px"></p></div>
     <p style="font-size:.7rem;color:var(--fg3)">${t('encrypt_about')}</p>
   </div>`;
 }
 async function deriveKey(pass,salt){const enc=new TextEncoder();const keyMaterial=await crypto.subtle.importKey('raw',enc.encode(pass),{name:'PBKDF2'},false,['deriveBits','deriveKey']);return crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations:100000,hash:'SHA-256'},keyMaterial,{name:'AES-GCM',length:256},true,['encrypt','decrypt'])}
-async function doEncrypt(){const pass=document.getElementById('enc-pass').value,text=document.getElementById('enc-input').value;if(!pass||!text)return notify(t('passphrase_text_required'));try{const salt=crypto.getRandomValues(new Uint8Array(16));const iv=crypto.getRandomValues(new Uint8Array(12));const key=await deriveKey(pass,salt);const enc=new TextEncoder();const ct=await crypto.subtle.encrypt({name:'AES-GCM',iv},key,enc.encode(text));const buf=new Uint8Array([...salt,...iv,...new Uint8Array(ct)]);var _b='';for(var _k=0;_k<buf.length;_k+=8192)_b+=String.fromCharCode.apply(null,buf.subarray(_k,_k+8192));document.getElementById('enc-output').value=btoa(_b);notify(t('encrypted_ok'))}catch(e){notify(t('passphrase_text_required'))}}
-async function doDecrypt(){const pass=document.getElementById('enc-pass').value,b64=document.getElementById('enc-input').value;document.getElementById('enc-output').value='';if(!pass||!b64)return notify(t('passphrase_text_required'));try{const raw=Uint8Array.from(atob(b64),c=>c.charCodeAt(0));const salt=raw.slice(0,16),iv=raw.slice(16,28),ct=raw.slice(28);const key=await deriveKey(pass,salt);const pt=await crypto.subtle.decrypt({name:'AES-GCM',iv},key,ct);document.getElementById('enc-output').value=new TextDecoder().decode(pt);notify(t('decrypted_ok'))}catch(e){document.getElementById('enc-output').value='';notify(t('decryption_failed'))}}
+async function doEncrypt(){const pass=document.getElementById('enc-pass').value,text=document.getElementById('enc-input').value;if(!pass||!text)return notify(t('passphrase_text_required'));try{const salt=crypto.getRandomValues(new Uint8Array(16));const iv=crypto.getRandomValues(new Uint8Array(12));const key=await deriveKey(pass,salt);const enc=new TextEncoder();const ct=await crypto.subtle.encrypt({name:'AES-GCM',iv},key,enc.encode(text));const buf=new Uint8Array([...salt,...iv,...new Uint8Array(ct)]);var _b='';for(var _k=0;_k<buf.length;_k+=8192)_b+=String.fromCharCode.apply(null,buf.subarray(_k,_k+8192));document.getElementById('enc-output').value=btoa(_b);ohEncStatus('✓ '+t('encrypted_ok'),'var(--green)');notify(t('encrypted_ok'))}catch(e){notify(t('passphrase_text_required'))}}
+async function doDecrypt(){const pass=document.getElementById('enc-pass').value,b64=document.getElementById('enc-input').value;document.getElementById('enc-output').value='';ohEncStatus('','');if(!pass||!b64)return notify(t('passphrase_text_required'));try{const raw=Uint8Array.from(atob(b64),c=>c.charCodeAt(0));const salt=raw.slice(0,16),iv=raw.slice(16,28),ct=raw.slice(28);const key=await deriveKey(pass,salt);const pt=await crypto.subtle.decrypt({name:'AES-GCM',iv},key,ct);document.getElementById('enc-output').value=new TextDecoder().decode(pt);ohEncStatus('✓ '+t('decrypted_ok'),'var(--green)');notify(t('decrypted_ok'))}catch(e){document.getElementById('enc-output').value='';ohEncStatus('✗ '+t('decryption_failed'),'var(--accent3)');notify(t('decryption_failed'))}}
+function ohEncStatus(m,c){var e=document.getElementById('enc-status');if(e){e.textContent=m;e.style.color=c}}
 
 // -- - Profile --
 function renderProfile(){
@@ -45272,6 +45274,48 @@ function importLangPack(){
   function sched(){ if(t)return; t=setTimeout(function(){t=null;run();scrollers();},250); }
   function start(){ run();scrollers(); try{ new MutationObserver(sched).observe(document.body,{childList:true,subtree:true}); }catch(e){} }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start); else start();
+})();
+</script>
+<script id="oh-r6-switcher">
+(function(){
+  /* Runda 6: comutator rapid de module (Ctrl/Cmd+K sau butonul 🔍) și Esc închide dialogurile. Doar DOM local, fără rețea. */
+  var L={en:{ph:'Jump to a module…',hint:'↑↓ move · Enter open · Esc close',none:'No module matches',btn:'Jump to module (Ctrl+K)',h:'Jump to module'},
+         ro:{ph:'Salt la un modul…',hint:'↑↓ navigare · Enter deschide · Esc închide',none:'Niciun modul nu se potrivește',btn:'Salt la modul (Ctrl+K)',h:'Salt la modul'}};
+  function lg(){var l='en';try{l=DB.settings.lang||'en'}catch(e){}return L[l]||L.en}
+  function esc2(x){return String(x).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+  function mods(){var out=[];document.querySelectorAll('.deck-card[data-sub]').forEach(function(c){var lb=c.querySelector('.deck-lbl'),ic=c.querySelector('.deck-ico'),pg=c.closest('.page');if(!lb)return;var g='';try{var nv=document.querySelector('.nav-item[data-page="'+pg.id.replace('page-','')+'"] .sidebar-label');g=nv?(nv.textContent||'').trim():''}catch(e){}out.push({sub:c.dataset.sub,label:(lb.textContent||'').trim(),ico:ic?(ic.textContent||'').trim():'',grp:g})});return out}
+  var sel=0,shown=[];
+  function draw(q){
+    var all=mods(),ql=(q||'').toLowerCase().trim();
+    shown=all.filter(function(m){return !ql||(m.label+' '+m.sub+' '+m.grp).toLowerCase().indexOf(ql)>=0}).slice(0,60);
+    if(sel>=shown.length)sel=0;
+    var ul=document.getElementById('oh-qs-list');if(!ul)return;
+    ul.innerHTML=shown.length?shown.map(function(m,i){return '<li><button type="button" class="oh-qs-item'+(i===sel?' sel':'')+'" data-i="'+i+'"><span aria-hidden="true">'+esc2(m.ico)+'</span><span>'+esc2(m.label)+'</span><span class="oh-qs-grp">'+esc2(m.grp)+'</span></button></li>'}).join(''):'<li class="oh-qs-hint">'+esc2(lg().none)+'</li>';
+  }
+  function go(i){var m=shown[i];if(!m)return;closeModal();var h='#'+m.sub;if(location.hash===h){try{handleHash()}catch(e){}}else{location.hash=h}}
+  function open(){
+    var T=lg();lbl();
+    openModal('<h2 style="margin-bottom:12px">🔍 '+esc2(T.h)+'</h2><input type="text" class="oh-qs-in" id="oh-qs-in" placeholder="'+esc2(T.ph)+'" aria-label="'+esc2(T.h)+'" autocomplete="off"><ul class="oh-qs-list" id="oh-qs-list"></ul><p class="oh-qs-hint">'+esc2(T.hint)+'</p>');
+    sel=0;draw('');
+    var inp=document.getElementById('oh-qs-in');if(inp)inp.focus();
+  }
+  document.addEventListener('keydown',function(e){
+    var md=document.getElementById('modal'),isOpen=md&&md.classList.contains('show');
+    if(e.key==='Escape'&&isOpen){closeModal();return}
+    if((e.ctrlKey||e.metaKey)&&!e.altKey&&String(e.key).toLowerCase()==='k'){e.preventDefault();open();return}
+    var inp=document.getElementById('oh-qs-in');
+    if(isOpen&&inp&&e.target===inp){
+      if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();if(shown.length){sel=(sel+(e.key==='ArrowDown'?1:shown.length-1))%shown.length;draw(inp.value);var el=document.querySelector('.oh-qs-item.sel');if(el&&el.scrollIntoView)el.scrollIntoView({block:'nearest'})}}
+      else if(e.key==='Enter'){e.preventDefault();go(sel)}
+    }
+  });
+  document.addEventListener('input',function(e){if(e.target&&e.target.id==='oh-qs-in'){sel=0;draw(e.target.value)}});
+  document.addEventListener('click',function(e){
+    var b=e.target.closest&&e.target.closest('.oh-qs-item');if(b){go(+b.dataset.i);return}
+    if(e.target.closest&&e.target.closest('#oh-qs-btn'))open();
+  });
+  function lbl(){var b=document.getElementById('oh-qs-btn');if(b){var T=lg();b.title=T.btn;b.setAttribute('aria-label',T.btn)}}
+  lbl();
 })();
 </script>
 </body>
