@@ -64,6 +64,14 @@ CC0 1.0 Universal (domeniu public) — vezi fișierul LICENSE. Pagina „License
 
 2026-10-10: verificat în browser (0 erori JS; la acea dată exista o cerere automată către Open-Meteo, acum eliminată). Corectat un XSS stocat (câmpurile `priority` din sarcini și `module` din feed) care putea fi declanșat printr-un import JSON malițios, plus accesibilitate (nume pentru controale, contrast, liste Markdown). Runda 2 (2026-10-11): licența unificată spre CC0 (pagina „Licenses", wiki, flashcard); vremea pe Dashboard este acum opt-in (nicio cerere automată la încărcare); textul static „nothing is sent anywhere" din cardul About a fost aliniat la cel din i18n; cheile de test Stripe înlocuite cu placeholder.
 
+## Istoric / Changelog
+
+**Runda 5 — 11 octombrie 2026** (fără număr de versiune în aplicație). Ultima actualizare: 11 octombrie 2026.
+- Decriptarea cu parolă greșită golește acum câmpul de ieșire (nu mai rămâne textul vechi).
+- Mesajul de donații nu mai acoperă butonul de editare al dashboardului (butonul a fost mutat mai sus; conținutul are spațiu jos); mesajul este un reper `complementary`.
+- Accesibilitate: nume pentru selectorul de limbă, ordine corectă a titlurilor în calendar; axe-core = 0 violări la 1280 și 360 px.
+- Neschimbat: cele 1377 de handlere inline (`onclick=` etc.) rămân; calitatea traducerilor în cele 71 de limbi nu e verificabilă.
+
 ## Autor
 
 Alexio — Alexandru-Ionuț Chiuță. Contact: alexio@trom.tf
