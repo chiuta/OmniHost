@@ -1,6 +1,6 @@
 # OmniHost
 
-**Versiune:** 1.0.0 · **Ultima actualizare:** 12 octombrie 2026
+**Versiune:** 1.1.0 · **Ultima actualizare:** 14 octombrie 2026
 
 Suită personală de productivitate într-un singur fișier HTML („quine"): notițe, planificator, finanțe, învățare, instrumente și multe module, inspirată de YunoHost.
 
@@ -28,6 +28,14 @@ Barele laterale grupează modulele (cu numărul de elemente afișat în aplicaț
 - Comutator rapid de module (`Ctrl/Cmd+K`).
 - Export / import JSON, resetare la „Clean Quine", vizualizare a sursei și pagină „Licenses" (credite pentru componente, inclusiv jsQR și qrcodejs).
 
+## Funcții noi (1.1.0)
+
+- **Căutare în notițe și jurnal** în comutatorul `Ctrl/Cmd+K`: sub lista de module apare secțiunea „În notițe și jurnal” (BM25, toleranță la greșeli de scriere, diacritice ignorate); clic sau Enter deschide notița sau intrarea de jurnal.
+- Copie de siguranță `.fff.json` (modul comun „fff-kit”, local, fără rețea): se deschide din dialogul care apare la clic pe versiunea din subsol (export, export criptat cu parolă, import cu confirmare, ștergerea datelor aplicației). Copia cuprinde baza de date a aplicației (`omnihost_db`); la import, copia importată are prioritate față de datele din fișier. Un export marchează „ultima copie de siguranță”.
+- Dialogul comutatorului are acum rol de dialog (accesibilitate). Handlerele inline existente nu au fost modificate.
+- Textele noi sunt în română și engleză (celelalte limbi folosesc engleza); **traducerea nu a fost verificată de un vorbitor nativ.**
+- `fff.config.json` marchează aplicația ca „auto-modificabilă” (butonul Save descarcă o copie cu datele încorporate); dialogul kitului avertizează că hash-ul copiei salvate diferă.
+
 ## Manual de utilizare
 
 1. Deschideți `index.html`. Pe Dashboard parcurgeți sarcinile de descoperire din lista „Tasks".
@@ -42,7 +50,7 @@ Barele laterale grupează modulele (cu numărul de elemente afișat în aplicaț
 
 ## Confidențialitate și rețea
 
-- **Stocare:** obiectul principal de date este în fișierul HTML; în plus, `localStorage` folosește cheia `omnihost_db`.
+- **Stocare:** obiectul principal de date este în fișierul HTML; în plus, `localStorage` folosește cheia `omnihost_db` (după „Save” este refăcută automat, pentru ca copia `.fff.json` să o poată cuprinde). Copia `.fff.json` conține, ca text simplu, inclusiv parolele și secretele din aplicație dacă nu o exportați criptată: folosiți exportul criptat cu parolă.
 - **Rețea:** codul conține câteva apeluri către terți, limitate de politica CSP (`connect-src`) la patru hosturi; toate pleacă doar după o acțiune a ta:
   - `geocoding-api.open-meteo.com` și `api.open-meteo.com` — cardul de vreme de pe Dashboard este **OPRIT implicit**; la clic pe „Show local weather” (opt-in, memorat în setările din fișier; se poate opri cu „Turn weather off”), orașul dedus din fusul orar al browserului este trimis pentru geocodare, apoi coordonatele pentru prognoză; rezultatele se păstrează în cache 30 de minute. Fără clic, la încărcare nu pleacă nicio cerere;
   - `api.dictionaryapi.dev` — doar când folosiți căutarea în dicționar (cuvântul căutat; eventual sunetul de pronunție de pe același host);
@@ -68,6 +76,8 @@ CC0 1.0 Universal (domeniu public) — vezi fișierul LICENSE. Pagina „License
 2026-10-10: verificat în browser (0 erori JS; la acea dată exista o cerere automată către Open-Meteo, acum eliminată). Corectat un XSS stocat (câmpurile `priority` din sarcini și `module` din feed) care putea fi declanșat printr-un import JSON malițios, plus accesibilitate (nume pentru controale, contrast, liste Markdown). Runda 2 (2026-10-11): licența unificată spre CC0 (pagina „Licenses", wiki, flashcard); vremea pe Dashboard este acum opt-in (nicio cerere automată la încărcare); textul static „nothing is sent anywhere" din cardul About a fost aliniat la cel din i18n; cheile de test Stripe înlocuite cu placeholder.
 
 ## Istoric / Changelog
+
+- 1.1.0 — 2026-10-14: căutare aproximativă în notițe și jurnal în `Ctrl/Cmd+K` (FFF.search); copie `.fff.json` prin modulele comune (core, label, bundle, search); teste noi: `tests/fff-r8.test.mjs`.
 
 - 1.0.0 — 2026-10-12: versiunea și data ultimei actualizări sunt afișate în aplicație (prima versiune numerotată; în bara laterală, cu etichetă tradusă în cele 71 de limbi).
 
