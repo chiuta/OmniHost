@@ -8,7 +8,7 @@ Suite personale di produttività in un unico file HTML («quine»): note, pianif
 
 **Online:** https://chiuta.github.io/OmniHost/
 
-![Schermata](screenshot.png)
+![Schermata](screenshot.it.png)
 
 ## Che cos'è
 

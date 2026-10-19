@@ -8,7 +8,7 @@ Persönliche Produktivitätssuite in einer einzigen HTML-Datei („Quine“): No
 
 **Online:** https://chiuta.github.io/OmniHost/
 
-![Screenshot](screenshot.png)
+![Screenshot](screenshot.de.png)
 
 ## Was es ist
 

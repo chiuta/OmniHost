@@ -8,7 +8,7 @@ Suite personnelle de productivité dans un seul fichier HTML (« quine ») : not
 
 **En ligne :** https://chiuta.github.io/OmniHost/
 
-![Capture d'écran](screenshot.png)
+![Capture d'écran](screenshot.fr.png)
 
 ## Ce que c'est
 

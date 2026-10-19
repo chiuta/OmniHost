@@ -8,7 +8,7 @@ Suíte pessoal de produtividade num único ficheiro HTML («quine»): notas, pla
 
 **Online:** https://chiuta.github.io/OmniHost/
 
-![Captura de ecrã](screenshot.png)
+![Captura de ecrã](screenshot.pt.png)
 
 ## O que é
 

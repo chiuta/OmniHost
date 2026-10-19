@@ -8,7 +8,7 @@ Személyes termelékenységi csomag egyetlen HTML-fájlban („quine”): jegyze
 
 **Élő verzió:** https://chiuta.github.io/OmniHost/
 
-![Képernyőkép](screenshot.png)
+![Képernyőkép](screenshot.hu.png)
 
 ## Mi ez
 

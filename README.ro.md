@@ -8,7 +8,7 @@ Suită personală de productivitate într-un singur fișier HTML („quine"): no
 
 **Live:** https://chiuta.github.io/OmniHost/
 
-![Captura de ecran](screenshot.png)
+![Captura de ecran](screenshot.ro.png)
 
 ## Ce este
 

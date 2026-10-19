@@ -8,7 +8,7 @@ A personal productivity suite in a single HTML file ("quine"): notes, planner, f
 
 **Live:** https://chiuta.github.io/OmniHost/
 
-![Screenshot](screenshot.png)
+![Screenshot](screenshot.en.png)
 
 ## What it is
 
