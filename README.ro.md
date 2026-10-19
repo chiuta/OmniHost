@@ -104,6 +104,6 @@ MIT — vezi fișierul LICENSE. Pagina „Licenses” din aplicație, antetul fi
 
 Alexio — Alexandru-Ionuț Chiuță. Contact: alexio@trom.tf
 
-## English summary
+## Rezumat
 
-OmniHost is a single-file "quine" personal productivity suite (notes, planner, finance, learning, tools, security and more; 30 themes; UI in 71 languages). Data lives inside the HTML file and in localStorage (`omnihost_db`); "Save" downloads a copy with data baked in. Network use is limited to Open-Meteo (dashboard weather, opt-in), dictionaryapi.dev (dictionary) and MyMemory (translation). MIT licence.
+OmniHost este o suită personală de productivitate de tip „quine” într-un singur fișier (notițe, planificator, finanțe, învățare, instrumente, securitate și altele; 30 de teme; interfață în 71 de limbi). Datele se află în fișierul HTML și în localStorage (`omnihost_db`); „Salvează” descarcă o copie cu datele încorporate. Utilizarea rețelei se limitează la Open-Meteo (vremea din panou, opt-in), dictionaryapi.dev (dicționar) și MyMemory (traducere). Licență MIT.
