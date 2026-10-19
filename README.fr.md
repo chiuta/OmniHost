@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · **Français** · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version :** 1.1.0 · **Dernière mise à jour :** 2026-10-14
+**Version :** 1.3.0 · **Dernière mise à jour :** 2026-10-19
 
 Suite personnelle de productivité dans un seul fichier HTML (« quine ») : notes, planificateur, finances, apprentissage, outils et de nombreux modules, inspirée de YunoHost.
 
