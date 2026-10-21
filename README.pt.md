@@ -35,7 +35,7 @@ As barras laterais agrupam os módulos (com o número de elementos apresentado n
 - **Pesquisa em notas e diário** no alternador `Ctrl/Cmd+K`: por baixo da lista de módulos surge a secção «Em notas e diário» (BM25, tolerância a erros de escrita, diacríticos ignorados); um clique ou Enter abre a nota ou a entrada do diário.
 - Cópia de segurança `.fff.json` (módulo comum «fff-kit», local, sem rede): abre-se a partir do diálogo que aparece ao clicar na versão do rodapé (exportação, exportação cifrada com palavra-passe, importação com confirmação, eliminação dos dados da aplicação). A cópia inclui a base de dados da aplicação (`omnihost_db`); na importação, a cópia importada tem prioridade sobre os dados do ficheiro. Uma exportação marca a «última cópia de segurança».
 - O diálogo do alternador tem agora o papel dialog (acessibilidade). Os manipuladores inline existentes não foram modificados.
-- Os novos textos estão em romeno e inglês (as outras línguas usam inglês); **a tradução não foi verificada por um falante nativo.**
+- Os textos do seletor e da pesquisa em notas/diário (e os sufixos dos nomes acessíveis gerados automaticamente) existem em 8 línguas (ro, en, fr, it, es, pt, de, hu; a língua é obtida das definições da aplicação); nas outras línguas da interface aparecem em inglês. As traduções fr/it/es/pt/de/hu são automáticas e **não foram verificadas por um falante nativo.**
 - `fff.config.json` marca a aplicação como «automodificável» (o botão Save transfere uma cópia com os dados incorporados); o diálogo do kit avisa que o hash da cópia guardada difere.
 
 ## Manual de utilização
@@ -78,6 +78,8 @@ MIT — ver o ficheiro LICENSE. A página «Licenses» da aplicação, o cabeça
 2026-10-10: verificado no navegador (0 erros de JS; nessa data existia um pedido automático ao Open-Meteo, entretanto removido). Corrigido um XSS armazenado (os campos `priority` das tarefas e `module` do feed) que podia ser desencadeado por uma importação JSON maliciosa, além de acessibilidade (nomes para controlos, contraste, listas Markdown). Ronda 2 (2026-10-11): licença unificada para CC0 (página «Licenses», wiki, flashcard); a meteorologia no Dashboard é agora opt-in (nenhum pedido automático ao carregar); o texto estático «nothing is sent anywhere» do cartão About foi alinhado com o do i18n; chaves de teste Stripe substituídas por um marcador.
 
 ## Histórico / Changelog
+
+- 1.3.1 — 2026-10-19: o seletor rápido de módulos (`Ctrl/Cmd+K`, o botão 🔍) com a pesquisa em notas e diário, os nomes acessíveis automáticos para controlos sem etiqueta e os ganchos de «última cópia de segurança» da cópia `.fff.json` (todos descritos acima) estão presentes na versão atual: tinham sido removidos por engano numa limpeza anterior e foram restaurados, com os seus textos agora em 8 línguas. Corrigido: os hashes de script acrescentados à CSP da página junto a `'unsafe-inline'` faziam o navegador bloquear todos os tratadores em linha (`onclick=` etc.); os hashes foram retirados e a CSP mantém `script-src 'self' 'unsafe-inline' blob:` como antes.
 
 - 1.1.0 — 2026-10-14: pesquisa aproximada em notas e diário com `Ctrl/Cmd+K` (FFF.search); cópia `.fff.json` através dos módulos comuns (core, label, bundle, search); novos testes: `tests/fff-r8.test.mjs`.
 

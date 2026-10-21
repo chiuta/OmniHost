@@ -35,7 +35,7 @@ Barele laterale grupează modulele (cu numărul de elemente afișat în aplicaț
 - **Căutare în notițe și jurnal** în comutatorul `Ctrl/Cmd+K`: sub lista de module apare secțiunea „În notițe și jurnal” (BM25, toleranță la greșeli de scriere, diacritice ignorate); clic sau Enter deschide notița sau intrarea de jurnal.
 - Copie de siguranță `.fff.json` (modul comun „fff-kit”, local, fără rețea): se deschide din dialogul care apare la clic pe versiunea din subsol (export, export criptat cu parolă, import cu confirmare, ștergerea datelor aplicației). Copia cuprinde baza de date a aplicației (`omnihost_db`); la import, copia importată are prioritate față de datele din fișier. Un export marchează „ultima copie de siguranță”.
 - Dialogul comutatorului are acum rol de dialog (accesibilitate). Handlerele inline existente nu au fost modificate.
-- Textele noi sunt în română și engleză (celelalte limbi folosesc engleza); **traducerea nu a fost verificată de un vorbitor nativ.**
+- Textele comutatorului și ale căutării în notițe/jurnal (și sufixele numelor accesibile generate automat) există în 8 limbi (ro, en, fr, it, es, pt, de, hu; limba se ia din setările aplicației); în celelalte limbi ale interfeței apar în engleză. Traducerile în fr/it/es/pt/de/hu sunt automate și **nu au fost verificate de un vorbitor nativ.**
 - `fff.config.json` marchează aplicația ca „auto-modificabilă” (butonul Save descarcă o copie cu datele încorporate); dialogul kitului avertizează că hash-ul copiei salvate diferă.
 
 ## Manual de utilizare
@@ -78,6 +78,8 @@ MIT — vezi fișierul LICENSE. Pagina „Licenses” din aplicație, antetul fi
 2026-10-10: verificat în browser (0 erori JS; la acea dată exista o cerere automată către Open-Meteo, acum eliminată). Corectat un XSS stocat (câmpurile `priority` din sarcini și `module` din feed) care putea fi declanșat printr-un import JSON malițios, plus accesibilitate (nume pentru controale, contrast, liste Markdown). Runda 2 (2026-10-11): licența unificată spre CC0 (pagina „Licenses", wiki, flashcard); vremea pe Dashboard este acum opt-in (nicio cerere automată la încărcare); textul static „nothing is sent anywhere" din cardul About a fost aliniat la cel din i18n; cheile de test Stripe înlocuite cu placeholder.
 
 ## Istoric / Changelog
+
+- 1.3.1 — 2026-10-19: comutatorul rapid de module (`Ctrl/Cmd+K`, butonul 🔍) cu căutarea în notițe și jurnal, numele accesibile automate pentru controalele fără etichetă și cârligele „ultima copie de siguranță” ale copiei `.fff.json` (toate descrise mai sus) sunt prezente în versiunea curentă: fuseseră eliminate din greșeală într-o curățare anterioară și au fost restaurate, cu textele lor acum în 8 limbi. Corectat: hash-urile de script adăugate în CSP-ul paginii alături de `'unsafe-inline'` făceau browserul să blocheze toate handlerele inline (`onclick=` etc.); hash-urile au fost eliminate, iar CSP păstrează `script-src 'self' 'unsafe-inline' blob:` ca înainte.
 
 - 1.1.0 — 2026-10-14: căutare aproximativă în notițe și jurnal în `Ctrl/Cmd+K` (FFF.search); copie `.fff.json` prin modulele comune (core, label, bundle, search); teste noi: `tests/fff-r8.test.mjs`.
 

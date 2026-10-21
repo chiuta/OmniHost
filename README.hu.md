@@ -35,7 +35,7 @@ Az oldalsávok csoportosítják a modulokat (az alkalmazásban megjelenített el
 - **Keresés a jegyzetekben és a naplóban** a `Ctrl/Cmd+K` váltóban: a modullista alatt megjelenik a „Jegyzetekben és naplóban” szakasz (BM25, elgépelés-tűrés, ékezetek figyelmen kívül hagyva); kattintásra vagy Enterre megnyílik a jegyzet vagy a naplóbejegyzés.
 - `.fff.json` biztonsági mentés (közös „fff-kit” modul, helyi, hálózat nélkül): a láblécben a verzióra kattintva megjelenő párbeszédablakból nyílik meg (export, jelszóval titkosított export, megerősítéssel végzett import, az alkalmazás adatainak törlése). A mentés tartalmazza az alkalmazás adatbázisát (`omnihost_db`); importáláskor az importált másolat elsőbbséget élvez a fájlban lévő adatokkal szemben. Egy export megjelöli az „utolsó biztonsági mentést”.
 - A váltó párbeszédablaka most dialog szerepet kapott (akadálymentesség). A meglévő inline eseménykezelők nem módosultak.
-- Az új szövegek románul és angolul vannak (a többi nyelv az angolt használja); **a fordítást anyanyelvi beszélő nem ellenőrizte.**
+- A váltó és a jegyzet-/naplókeresés szövegei (és az automatikusan generált hozzáférhető nevek utótagjai) 8 nyelven léteznek (ro, en, fr, it, es, pt, de, hu; a nyelvet az alkalmazás beállításaiból veszi); a felület többi nyelvén angolul jelennek meg. Az fr/it/es/pt/de/hu fordítások gépiek, és **anyanyelvi beszélő nem ellenőrizte őket.**
 - Az `fff.config.json` az alkalmazást „önmódosítóként” jelöli meg (a Save gomb letölt egy másolatot a beágyazott adatokkal); a készlet párbeszédablaka figyelmeztet, hogy a mentett másolat hash-e eltér.
 
 ## Használati útmutató
@@ -78,6 +78,8 @@ MIT — lásd a LICENSE fájlt. Az alkalmazás „Licenses” oldala, a fájl fe
 2026-10-10: böngészőben ellenőrizve (0 JS-hiba; az adott időpontban volt egy automatikus kérés az Open-Meteo felé, ez azóta megszűnt). Javítottunk egy tárolt XSS-t (a feladatok `priority` és a hírfolyam `module` mezői), amelyet egy rosszindulatú JSON-importtal ki lehetett váltani, valamint az akadálymentességet (a vezérlők nevei, kontraszt, Markdown-listák). 2. kör (2026-10-11): a licenc egységesítve CC0 felé („Licenses” oldal, wiki, flashcard); a Dashboard időjárása mostantól opt-in (betöltéskor nincs automatikus kérés); az About kártya „nothing is sent anywhere” statikus szövegét összehangoltuk az i18n-ben lévővel; a Stripe-tesztkulcsok helyőrzőre cserélve.
 
 ## Előzmények / Changelog
+
+- 1.3.1 — 2026-10-19: a gyors modulváltó (`Ctrl/Cmd+K`, a 🔍 gomb) a jegyzetek és a napló közti kereséssel, a címke nélküli vezérlők automatikus hozzáférhető nevei és a `.fff.json` másolat „utolsó mentés” kapcsai (mind fentebb leírva) megvannak a jelenlegi verzióban: egy korábbi takarításkor tévedésből eltávolították őket, és helyreállítottuk őket, szövegeik most 8 nyelven vannak. Javítva: az oldal CSP-jébe a `'unsafe-inline'` mellé került szkript-hash-ek miatt a böngésző minden beágyazott kezelőt (`onclick=` stb.) letiltott; a hash-eket eltávolítottuk, és a CSP a korábbiak szerint `script-src 'self' 'unsafe-inline' blob:` marad.
 
 - 1.1.0 — 2026-10-14: hozzávetőleges keresés a jegyzetekben és a naplóban a `Ctrl/Cmd+K` segítségével (FFF.search); `.fff.json` másolat a közös modulokon keresztül (core, label, bundle, search); új tesztek: `tests/fff-r8.test.mjs`.
 

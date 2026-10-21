@@ -35,7 +35,7 @@ Die Seitenleisten gruppieren die Module (mit der in der App angezeigten Anzahl d
 - **Suche in Notizen und Tagebuch** im Umschalter `Ctrl/Cmd+K`: Unter der Modulliste erscheint der Abschnitt „In Notizen und Tagebuch“ (BM25, Toleranz gegenüber Tippfehlern, Diakritika werden ignoriert); ein Klick oder die Eingabetaste öffnet die Notiz oder den Tagebucheintrag.
 - `.fff.json`-Sicherung (gemeinsames Modul „fff-kit“, lokal, ohne Netzwerk): Sie öffnet sich über den Dialog, der beim Klick auf die Version in der Fußzeile erscheint (Export, passwortverschlüsselter Export, Import mit Bestätigung, Löschen der App-Daten). Die Sicherung umfasst die Datenbank der App (`omnihost_db`); beim Import hat die importierte Kopie Vorrang vor den Daten in der Datei. Ein Export markiert die „letzte Sicherung“.
 - Der Dialog des Umschalters hat jetzt die Dialog-Rolle (Barrierefreiheit). Die vorhandenen Inline-Handler wurden nicht verändert.
-- Die neuen Texte sind auf Rumänisch und Englisch (die anderen Sprachen verwenden Englisch); **die Übersetzung wurde nicht von einem Muttersprachler geprüft.**
+- Die Texte des Umschalters und der Suche in Notizen/Tagebuch (und die Suffixe der automatisch erzeugten zugänglichen Namen) gibt es in 8 Sprachen (ro, en, fr, it, es, pt, de, hu; die Sprache wird den App-Einstellungen entnommen); in den übrigen Oberflächensprachen erscheinen sie auf Englisch. Die Übersetzungen fr/it/es/pt/de/hu sind automatisch und **wurden nicht von einem Muttersprachler geprüft.**
 - `fff.config.json` kennzeichnet die App als „selbstverändernd“ (die Schaltfläche Save lädt eine Kopie mit eingebetteten Daten herunter); der Dialog des Kits warnt, dass sich der Hash der gespeicherten Kopie unterscheidet.
 
 ## Bedienungsanleitung
@@ -78,6 +78,8 @@ MIT — siehe Datei LICENSE. Die Seite „Licenses“ der App, der Dateikopf und
 2026-10-10: im Browser geprüft (0 JS-Fehler; zu diesem Zeitpunkt gab es eine automatische Anfrage an Open-Meteo, inzwischen entfernt). Eine gespeicherte XSS behoben (die Felder `priority` der Aufgaben und `module` des Feeds), die durch einen bösartigen JSON-Import ausgelöst werden konnte, dazu Barrierefreiheit (Namen für Bedienelemente, Kontrast, Markdown-Listen). Runde 2 (2026-10-11): Lizenz vereinheitlicht zu CC0 (Seite „Licenses“, Wiki, Flashcard); das Wetter im Dashboard ist jetzt Opt-in (keine automatische Anfrage beim Laden); der statische Text „nothing is sent anywhere“ in der About-Karte wurde an den aus i18n angeglichen; Stripe-Testschlüssel durch einen Platzhalter ersetzt.
 
 ## Verlauf / Changelog
+
+- 1.3.1 — 2026-10-19: der schnelle Modul-Umschalter (`Ctrl/Cmd+K`, die Schaltfläche 🔍) mit der Suche in Notizen und Tagebuch, die automatischen zugänglichen Namen für Steuerelemente ohne Beschriftung und die Hooks „letzte Sicherung“ der `.fff.json`-Kopie (alle oben beschrieben) sind in der aktuellen Version vorhanden: Sie waren bei einer früheren Bereinigung versehentlich entfernt worden und wurden wiederhergestellt, ihre Texte jetzt in 8 Sprachen. Behoben: Skript-Hashes, die der CSP der Seite neben `'unsafe-inline'` hinzugefügt worden waren, ließen den Browser alle Inline-Handler (`onclick=` usw.) blockieren; die Hashes wurden entfernt, und die CSP behält wie zuvor `script-src 'self' 'unsafe-inline' blob:`.
 
 - 1.1.0 — 2026-10-14: unscharfe Suche in Notizen und Tagebuch mit `Ctrl/Cmd+K` (FFF.search); `.fff.json`-Kopie über die gemeinsamen Module (core, label, bundle, search); neue Tests: `tests/fff-r8.test.mjs`.
 

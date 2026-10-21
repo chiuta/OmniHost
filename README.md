@@ -35,7 +35,7 @@ The sidebars group the modules (with the number of items shown in the app):
 - **Search in notes and journal** in the `Ctrl/Cmd+K` switcher: below the module list a section "In notes and journal" appears (BM25, typo tolerance, diacritics ignored); a click or Enter opens the note or journal entry.
 - `.fff.json` backup (shared "fff-kit" module, local, no network): it opens from the dialog that appears when you click the version in the footer (export, password-encrypted export, import with confirmation, deletion of the app data). The backup covers the app database (`omnihost_db`); on import, the imported copy takes priority over the data in the file. An export marks the "last backup".
 - The switcher dialog now has the dialog role (accessibility). The existing inline handlers were not modified.
-- The new texts are in Romanian and English (the other languages use English); **the translation has not been verified by a native speaker.**
+- The texts of the switcher and of the notes/journal search (and the suffixes of the automatically generated accessible names) are available in 8 languages (ro, en, fr, it, es, pt, de, hu; the language is taken from the app settings); in the other languages of the interface they appear in English. The fr/it/es/pt/de/hu translations are automatic and **have not been verified by a native speaker.**
 - `fff.config.json` marks the app as "self-modifying" (the Save button downloads a copy with the data embedded); the kit's dialog warns that the hash of the saved copy differs.
 
 ## User guide
@@ -78,6 +78,8 @@ MIT — see the LICENSE file. The "Licenses" page in the app, the file header an
 2026-10-10: verified in the browser (0 JS errors; at that date there was an automatic request to Open-Meteo, now removed). Fixed a stored XSS (the `priority` fields of tasks and `module` of the feed) that could be triggered through a malicious JSON import, plus accessibility (names for controls, contrast, Markdown lists). Round 2 (2026-10-11): the license unified to CC0 (the "Licenses" page, wiki, flashcard); the weather on the Dashboard is now opt-in (no automatic request at load); the static text "nothing is sent anywhere" in the About card was aligned with the one in i18n; the Stripe test keys replaced with a placeholder.
 
 ## History / Changelog
+
+- 1.3.1 — 2026-10-19: the quick module switcher (`Ctrl/Cmd+K`, the 🔍 button) with the search in notes and journal, the automatic accessible names for controls without a label and the "last backup" hooks of the `.fff.json` copy (all described above) are present in the current version: they had been removed by mistake in an earlier cleanup and were restored, with their texts now in 8 languages. Fixed: script hashes added to the page's CSP next to `'unsafe-inline'` made the browser block every inline handler (`onclick=` etc.); the hashes were removed and the CSP keeps `script-src 'self' 'unsafe-inline' blob:` as before.
 
 - 1.1.0 — 2026-10-14: fuzzy search in notes and journal in `Ctrl/Cmd+K` (FFF.search); `.fff.json` copy through the shared modules (core, label, bundle, search); new tests: `tests/fff-r8.test.mjs`.
 
