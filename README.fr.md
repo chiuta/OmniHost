@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · **Français** · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version :** 1.3.7 · **Dernière mise à jour :** 2026-10-22
+**Version :** 1.3.8 · **Dernière mise à jour :** 2026-10-22
 
 Suite personnelle de productivité dans un seul fichier HTML (« quine ») : notes, planificateur, finances, apprentissage, outils et de nombreux modules, inspirée de YunoHost.
 
@@ -78,6 +78,10 @@ MIT — voir le fichier LICENSE. La page « Licenses » de l'application, l'en-t
 2026-10-10 : vérifié dans le navigateur (0 erreur JS ; à cette date il existait une requête automatique vers Open-Meteo, désormais supprimée). Correction d'une XSS stockée (les champs `priority` des tâches et `module` du flux) qui pouvait être déclenchée par un import JSON malveillant, ainsi que l'accessibilité (noms des contrôles, contraste, listes Markdown). Tour 2 (2026-10-11) : licence unifiée vers CC0 (page « Licenses », wiki, flashcard) ; la météo du Dashboard est désormais en opt-in (aucune requête automatique au chargement) ; le texte statique « nothing is sent anywhere » de la carte About a été aligné sur celui de l'i18n ; clés de test Stripe remplacées par un espace réservé.
 
 ## Historique / Changelog
+
+### 1.3.8 — 2026-10-22
+
+fff-kit 1.1.4 : cibles tactiles et taille de texte minimale; cibles tactiles et texte corrigés.
 
 - 1.3.7 — 2026-10-22 : sécurité. Les données (localStorage, la copie intégrée au fichier et toute sauvegarde JSON ou `.fff.json` importée) sont désormais validées selon un schéma : les identifiants doivent respecter `^[A-Za-z0-9_-]{1,64}$`, les types et tailles sont vérifiés, les clés (`__proto__` …) et textes dangereux sont corrigés ou supprimés, avec un message en 8 langues. Toute valeur issue des données et placée dans un gestionnaire en ligne ou un modèle est échappée (`jsa()`/`esc()`) : une sauvegarde hostile ne peut plus exécuter de code ni lire `localStorage.omnihost_db`. La sauvegarde `.fff.json` non chiffrée du kit ne contient plus les mots de passe, les clés 2FA ni les entrées du coffre (la sauvegarde avec mot de passe reste complète et chiffrée) ; une note dans les Paramètres l'explique. Non fait : la CSP contient encore `'unsafe-inline'` (environ 1 390 gestionnaires en ligne subsistent ; leur migration vers `addEventListener` est un chantier plus important). Nouveau test : `tests/audit-r10.test.mjs`.
 - 1.3.6 — 2026-10-22 : fff-kit 1.1.2 : PBKDF2 à 600 000 itérations, protection anti-clickjacking

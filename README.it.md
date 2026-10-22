@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · **Italiano** · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versione:** 1.3.7 · **Ultimo aggiornamento:** 2026-10-22
+**Versione:** 1.3.8 · **Ultimo aggiornamento:** 2026-10-22
 
 Suite personale di produttività in un unico file HTML («quine»): note, pianificatore, finanze, apprendimento, strumenti e molti moduli, ispirata a YunoHost.
 
@@ -78,6 +78,10 @@ MIT — vedi il file LICENSE. La pagina «Licenses» dell'app, l'intestazione de
 2026-10-10: verificato nel browser (0 errori JS; a quella data esisteva una richiesta automatica a Open-Meteo, ora rimossa). Corretta una XSS memorizzata (i campi `priority` delle attività e `module` del feed) che poteva essere innescata tramite un'importazione JSON malevola, più l'accessibilità (nomi per i controlli, contrasto, elenchi Markdown). Round 2 (2026-10-11): licenza unificata verso CC0 (pagina «Licenses», wiki, flashcard); il meteo nella Dashboard è ora opt-in (nessuna richiesta automatica al caricamento); il testo statico «nothing is sent anywhere» nella scheda About è stato allineato a quello dell'i18n; chiavi di test Stripe sostituite con un segnaposto.
 
 ## Cronologia / Changelog
+
+### 1.3.8 — 2026-10-22
+
+fff-kit 1.1.4: target touch e dimensione minima del testo; target touch e testo corretti.
 
 - 1.3.7 — 2026-10-22: sicurezza. I dati (localStorage, la copia incorporata nel file e ogni backup JSON o `.fff.json` importato) sono ora convalidati con uno schema: gli ID devono rispettare `^[A-Za-z0-9_-]{1,64}$`, tipi e dimensioni vengono verificati, le chiavi (`__proto__` …) e i testi pericolosi vengono corretti o rimossi, con un messaggio in 8 lingue. Ogni valore proveniente dai dati e inserito in un handler inline o in un modello è sottoposto a escape (`jsa()`/`esc()`): un backup ostile non può più eseguire codice né leggere `localStorage.omnihost_db`. Il backup `.fff.json` non cifrato del kit non contiene più password, chiavi 2FA e voci della cassaforte (il backup con password resta completo e cifrato); una nota nelle Impostazioni lo spiega. Non fatto: la CSP ha ancora `'unsafe-inline'` (restano circa 1.390 handler inline; la migrazione a `addEventListener` è un refactoring più ampio). Nuovo test: `tests/audit-r10.test.mjs`.
 - 1.3.6 — 2026-10-22: fff-kit 1.1.2: PBKDF2 con 600.000 iterazioni, protezione anti-clickjacking

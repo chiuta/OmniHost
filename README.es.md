@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · **Español** · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versión:** 1.3.7 · **Última actualización:** 2026-10-22
+**Versión:** 1.3.8 · **Última actualización:** 2026-10-22
 
 Suite personal de productividad en un único archivo HTML («quine»): notas, planificador, finanzas, aprendizaje, herramientas y muchos módulos, inspirada en YunoHost.
 
@@ -78,6 +78,10 @@ MIT — consulta el archivo LICENSE. La página «Licenses» de la aplicación, 
 2026-10-10: verificado en el navegador (0 errores de JS; en esa fecha existía una solicitud automática a Open-Meteo, ahora eliminada). Corregido un XSS almacenado (los campos `priority` de las tareas y `module` del feed) que podía activarse mediante una importación JSON maliciosa, además de accesibilidad (nombres de controles, contraste, listas Markdown). Ronda 2 (2026-10-11): licencia unificada hacia CC0 (página «Licenses», wiki, flashcard); el tiempo en el Dashboard es ahora opt-in (ninguna solicitud automática al cargar); el texto estático «nothing is sent anywhere» de la tarjeta About se alineó con el de i18n; claves de prueba de Stripe sustituidas por un marcador de posición.
 
 ## Historial / Changelog
+
+### 1.3.8 — 2026-10-22
+
+fff-kit 1.1.4: objetivos táctiles y tamaño mínimo de texto; objetivos táctiles y texto corregidos.
 
 - 1.3.7 — 2026-10-22: seguridad. Los datos (localStorage, la copia incrustada en el archivo y cualquier copia JSON o `.fff.json` importada) se validan ahora con un esquema: los ID deben cumplir `^[A-Za-z0-9_-]{1,64}$`, se comprueban tipos y tamaños, y las claves (`__proto__` …) y textos peligrosos se reparan o eliminan, con un mensaje en 8 idiomas. Todo valor procedente de los datos que se coloca en un manejador en línea o en una plantilla se escapa (`jsa()`/`esc()`), de modo que una copia hostil ya no puede ejecutar código ni leer `localStorage.omnihost_db`. La copia `.fff.json` sin cifrar del kit ya no contiene contraseñas, claves 2FA ni entradas de la caja fuerte (la copia con contraseña sigue completa y cifrada); una nota en Ajustes lo explica. Sin hacer: la CSP aún tiene `'unsafe-inline'` (quedan unos 1.390 manejadores en línea; migrarlos a `addEventListener` es una refactorización mayor). Nueva prueba: `tests/audit-r10.test.mjs`.
 - 1.3.6 — 2026-10-22: fff-kit 1.1.2: PBKDF2 con 600.000 iteraciones, protección anti-clickjacking

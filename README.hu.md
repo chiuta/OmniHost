@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · **Magyar**
 
-**Verzió:** 1.3.7 · **Utolsó frissítés:** 2026-10-22
+**Verzió:** 1.3.8 · **Utolsó frissítés:** 2026-10-22
 
 Személyes termelékenységi csomag egyetlen HTML-fájlban („quine”): jegyzetek, tervező, pénzügyek, tanulás, eszközök és sok modul, a YunoHost ihletésével.
 
@@ -78,6 +78,10 @@ MIT — lásd a LICENSE fájlt. Az alkalmazás „Licenses” oldala, a fájl fe
 2026-10-10: böngészőben ellenőrizve (0 JS-hiba; az adott időpontban volt egy automatikus kérés az Open-Meteo felé, ez azóta megszűnt). Javítottunk egy tárolt XSS-t (a feladatok `priority` és a hírfolyam `module` mezői), amelyet egy rosszindulatú JSON-importtal ki lehetett váltani, valamint az akadálymentességet (a vezérlők nevei, kontraszt, Markdown-listák). 2. kör (2026-10-11): a licenc egységesítve CC0 felé („Licenses” oldal, wiki, flashcard); a Dashboard időjárása mostantól opt-in (betöltéskor nincs automatikus kérés); az About kártya „nothing is sent anywhere” statikus szövegét összehangoltuk az i18n-ben lévővel; a Stripe-tesztkulcsok helyőrzőre cserélve.
 
 ## Előzmények / Changelog
+
+### 1.3.8 — 2026-10-22
+
+fff-kit 1.1.4: érintési célok és minimális szövegméret; érintési célok és szöveg javítva.
 
 - 1.3.7 — 2026-10-22: biztonság. Az adatokat (localStorage, a fájlba ágyazott másolat és minden importált JSON vagy `.fff.json` mentés) mostantól sémával ellenőrzi az alkalmazás: az azonosítóknak meg kell felelniük a `^[A-Za-z0-9_-]{1,64}$` mintának, a típusokat és méreteket ellenőrzi, a veszélyes kulcsokat (`__proto__` …) és szövegeket kijavítja vagy eltávolítja, 8 nyelvű üzenettel. Minden, az adatokból származó és soron belüli eseménykezelőbe vagy sablonba kerülő érték escape-elve van (`jsa()`/`esc()`), így egy ellenséges mentés nem tud kódot futtatni, és a `localStorage.omnihost_db` tartalmát sem olvashatja. A kit titkosítatlan `.fff.json` mentése már nem tartalmaz jelszavakat, 2FA-kulcsokat és széfbejegyzéseket (a jelszóval készült mentés teljes és titkosított marad); a Beállításokban egy megjegyzés ezt magyarázza. Nincs kész: a CSP-ben még van `'unsafe-inline'` (mintegy 1390 soron belüli eseménykezelő maradt; az `addEventListener`-re való átállás nagyobb átalakítás). Új teszt: `tests/audit-r10.test.mjs`.
 - 1.3.6 — 2026-10-22: fff-kit 1.1.2: PBKDF2 600 000 iterációval, clickjacking elleni védelem

@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · **Português** · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versão:** 1.3.7 · **Última atualização:** 2026-10-22
+**Versão:** 1.3.8 · **Última atualização:** 2026-10-22
 
 Suíte pessoal de produtividade num único ficheiro HTML («quine»): notas, planeador, finanças, aprendizagem, ferramentas e muitos módulos, inspirada no YunoHost.
 
@@ -78,6 +78,10 @@ MIT — ver o ficheiro LICENSE. A página «Licenses» da aplicação, o cabeça
 2026-10-10: verificado no navegador (0 erros de JS; nessa data existia um pedido automático ao Open-Meteo, entretanto removido). Corrigido um XSS armazenado (os campos `priority` das tarefas e `module` do feed) que podia ser desencadeado por uma importação JSON maliciosa, além de acessibilidade (nomes para controlos, contraste, listas Markdown). Ronda 2 (2026-10-11): licença unificada para CC0 (página «Licenses», wiki, flashcard); a meteorologia no Dashboard é agora opt-in (nenhum pedido automático ao carregar); o texto estático «nothing is sent anywhere» do cartão About foi alinhado com o do i18n; chaves de teste Stripe substituídas por um marcador.
 
 ## Histórico / Changelog
+
+### 1.3.8 — 2026-10-22
+
+fff-kit 1.1.4: alvos de toque e tamanho mínimo do texto; alvos de toque e texto corrigidos.
 
 - 1.3.7 — 2026-10-22: segurança. Os dados (localStorage, a cópia incorporada no ficheiro e qualquer cópia JSON ou `.fff.json` importada) são agora validados por um esquema: os IDs têm de cumprir `^[A-Za-z0-9_-]{1,64}$`, tipos e tamanhos são verificados, e as chaves (`__proto__` …) e textos perigosos são corrigidos ou removidos, com mensagem em 8 idiomas. Todo o valor vindo dos dados e colocado num manipulador em linha ou num modelo é escapado (`jsa()`/`esc()`), pelo que uma cópia hostil já não consegue executar código nem ler `localStorage.omnihost_db`. A cópia `.fff.json` não cifrada do kit já não contém palavras-passe, chaves 2FA nem entradas do cofre (a cópia feita com palavra-passe continua completa e cifrada); uma nota nas Definições explica-o. Por fazer: a CSP ainda tem `'unsafe-inline'` (restam cerca de 1.390 manipuladores em linha; migrá-los para `addEventListener` é uma refatoração maior). Novo teste: `tests/audit-r10.test.mjs`.
 - 1.3.6 — 2026-10-22: fff-kit 1.1.2: PBKDF2 com 600.000 iterações, proteção anti-clickjacking

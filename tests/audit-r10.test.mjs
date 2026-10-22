@@ -95,7 +95,7 @@ console.log('— încărcare din localStorage (copie ostilă) și import prin ki
   await clickAll(page, ['notes', 'tasks', 'passwords']);
   check('localStorage ostil: nicio navigare', (await page.evaluate(() => location.href)).startsWith('file:') && !net.some((u) => /\/\/x\//.test(u)), net);
   // kit
-  const bundle = JSON.stringify({format: 'fff-bundle', schema: 1, app: 'omnihost', version: '1.3.7', updated: '2026-10-22', exported: new Date().toISOString(), data: {omnihost_db: JSON.stringify(Object.assign(JSON.parse(bad), {_persistTime: Date.now() + 2e9}))}});
+  const bundle = JSON.stringify({format: 'fff-bundle', schema: 1, app: 'omnihost', version: '1.3.8', updated: '2026-10-22', exported: new Date().toISOString(), data: {omnihost_db: JSON.stringify(Object.assign(JSON.parse(bad), {_persistTime: Date.now() + 2e9}))}});
   await Promise.all([page.waitForNavigation({waitUntil: 'load', timeout: 15000}).catch(() => null), page.evaluate((t) => FFF.bundle.import(new File([t], 'o.fff.json', {type: 'application/json'}), {confirm: false, reload: true}), bundle).catch(() => null)]);
   await page.waitForTimeout(1800);
   const ids2 = await page.evaluate(() => [...DB.notes, ...DB.tasks, ...DB.passwords].map((x) => x.id));
