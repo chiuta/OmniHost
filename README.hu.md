@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · **Magyar**
 
-**Verzió:** 1.3.4 · **Utolsó frissítés:** 2026-10-22
+**Verzió:** 1.3.5 · **Utolsó frissítés:** 2026-10-22
 
 Személyes termelékenységi csomag egyetlen HTML-fájlban („quine”): jegyzetek, tervező, pénzügyek, tanulás, eszközök és sok modul, a YunoHost ihletésével.
 
@@ -109,6 +109,9 @@ Alexio — Alexandru-Ionuț Chiuță. Kapcsolat: alexio@trom.tf
 ## Összefoglaló
 
 Az OmniHost egy egyfájlos „quine” személyes termelékenységi csomag (jegyzetek, tervező, pénzügyek, tanulás, eszközök, biztonság és még sok más; 30 téma; felület 71 nyelven). Az adatok a HTML-fájlban és a localStorage-ban (`omnihost_db`) élnek; a „Save” letölti a beágyazott adatokat tartalmazó másolatot. A hálózathasználat az Open-Meteóra (műszerfal-időjárás, opt-in), a dictionaryapi.dev-re (szótár) és a MyMemoryra (fordítás) korlátozódik. MIT licenc.
+
+### 1.3.5 — 2026-10-22
+- Hozzáférhetőség és mobil: oldalanként egyetlen H1 (a Markdown-címsorok H2-vé válnak), legalább 12 px-es szövegek és legalább 24 px-es érintési célok.
 
 ### 1.3.4 — 2026-10-22
 - A többi nyelven angolul maradt feliratok és szövegek le vannak fordítva (modulleírások, biztonsági ellenőrzőlista, HTTP-referencia, naptári hónapnevek, kategóriák és állapotok, gyakorlatok és étkezések, profilszöveg), a Fordító és a Szótár nyelvválasztóinak akadálymentes neve pedig követi a felület nyelvét. A tulajdonnevek, idézetek, kód és azonosítók változatlanok.

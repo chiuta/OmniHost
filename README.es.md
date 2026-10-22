@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · **Español** · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versión:** 1.3.4 · **Última actualización:** 2026-10-22
+**Versión:** 1.3.5 · **Última actualización:** 2026-10-22
 
 Suite personal de productividad en un único archivo HTML («quine»): notas, planificador, finanzas, aprendizaje, herramientas y muchos módulos, inspirada en YunoHost.
 
@@ -109,6 +109,9 @@ Alexio — Alexandru-Ionuț Chiuță. Contacto: alexio@trom.tf
 ## Resumen
 
 OmniHost es una suite personal de productividad «quine» de un solo archivo (notas, planificador, finanzas, aprendizaje, herramientas, seguridad y más; 30 temas; interfaz en 71 idiomas). Los datos viven dentro del archivo HTML y en localStorage (`omnihost_db`); «Save» descarga una copia con los datos incorporados. El uso de la red se limita a Open-Meteo (tiempo del panel, opt-in), dictionaryapi.dev (diccionario) y MyMemory (traducción). Licencia MIT.
+
+### 1.3.5 — 2026-10-22
+- Accesibilidad y móvil: un único H1 por página (los títulos Markdown pasan a H2), textos de al menos 12 px y objetivos táctiles de al menos 24 px.
 
 ### 1.3.4 — 2026-10-22
 - Se traducen las etiquetas y textos que seguían en inglés en los demás idiomas (descripciones de módulos, lista de seguridad, referencia HTTP, nombres de los meses del calendario, categorías y estados, ejercicios y comidas, texto del perfil), y los nombres accesibles de los selectores de idioma del Traductor y del Diccionario siguen el idioma de la interfaz. Los nombres propios, las citas, el código y los identificadores se mantienen.
