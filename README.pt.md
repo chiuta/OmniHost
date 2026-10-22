@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · **Português** · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versão:** 1.3.6 · **Última atualização:** 2026-10-22
+**Versão:** 1.3.7 · **Última atualização:** 2026-10-22
 
 Suíte pessoal de produtividade num único ficheiro HTML («quine»): notas, planeador, finanças, aprendizagem, ferramentas e muitos módulos, inspirada no YunoHost.
 
@@ -79,6 +79,7 @@ MIT — ver o ficheiro LICENSE. A página «Licenses» da aplicação, o cabeça
 
 ## Histórico / Changelog
 
+- 1.3.7 — 2026-10-22: segurança. Os dados (localStorage, a cópia incorporada no ficheiro e qualquer cópia JSON ou `.fff.json` importada) são agora validados por um esquema: os IDs têm de cumprir `^[A-Za-z0-9_-]{1,64}$`, tipos e tamanhos são verificados, e as chaves (`__proto__` …) e textos perigosos são corrigidos ou removidos, com mensagem em 8 idiomas. Todo o valor vindo dos dados e colocado num manipulador em linha ou num modelo é escapado (`jsa()`/`esc()`), pelo que uma cópia hostil já não consegue executar código nem ler `localStorage.omnihost_db`. A cópia `.fff.json` não cifrada do kit já não contém palavras-passe, chaves 2FA nem entradas do cofre (a cópia feita com palavra-passe continua completa e cifrada); uma nota nas Definições explica-o. Por fazer: a CSP ainda tem `'unsafe-inline'` (restam cerca de 1.390 manipuladores em linha; migrá-los para `addEventListener` é uma refatoração maior). Novo teste: `tests/audit-r10.test.mjs`.
 - 1.3.6 — 2026-10-22: fff-kit 1.1.2: PBKDF2 com 600.000 iterações, proteção anti-clickjacking
 - 1.3.1 — 2026-10-19: o seletor rápido de módulos (`Ctrl/Cmd+K`, o botão 🔍) com a pesquisa em notas e diário, os nomes acessíveis automáticos para controlos sem etiqueta e os ganchos de «última cópia de segurança» da cópia `.fff.json` (todos descritos acima) estão presentes na versão atual: tinham sido removidos por engano numa limpeza anterior e foram restaurados, com os seus textos agora em 8 línguas. Corrigido: os hashes de script acrescentados à CSP da página junto a `'unsafe-inline'` faziam o navegador bloquear todos os tratadores em linha (`onclick=` etc.); os hashes foram retirados e a CSP mantém `script-src 'self' 'unsafe-inline' blob:` como antes.
 

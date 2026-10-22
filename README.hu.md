@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · **Magyar**
 
-**Verzió:** 1.3.6 · **Utolsó frissítés:** 2026-10-22
+**Verzió:** 1.3.7 · **Utolsó frissítés:** 2026-10-22
 
 Személyes termelékenységi csomag egyetlen HTML-fájlban („quine”): jegyzetek, tervező, pénzügyek, tanulás, eszközök és sok modul, a YunoHost ihletésével.
 
@@ -79,6 +79,7 @@ MIT — lásd a LICENSE fájlt. Az alkalmazás „Licenses” oldala, a fájl fe
 
 ## Előzmények / Changelog
 
+- 1.3.7 — 2026-10-22: biztonság. Az adatokat (localStorage, a fájlba ágyazott másolat és minden importált JSON vagy `.fff.json` mentés) mostantól sémával ellenőrzi az alkalmazás: az azonosítóknak meg kell felelniük a `^[A-Za-z0-9_-]{1,64}$` mintának, a típusokat és méreteket ellenőrzi, a veszélyes kulcsokat (`__proto__` …) és szövegeket kijavítja vagy eltávolítja, 8 nyelvű üzenettel. Minden, az adatokból származó és soron belüli eseménykezelőbe vagy sablonba kerülő érték escape-elve van (`jsa()`/`esc()`), így egy ellenséges mentés nem tud kódot futtatni, és a `localStorage.omnihost_db` tartalmát sem olvashatja. A kit titkosítatlan `.fff.json` mentése már nem tartalmaz jelszavakat, 2FA-kulcsokat és széfbejegyzéseket (a jelszóval készült mentés teljes és titkosított marad); a Beállításokban egy megjegyzés ezt magyarázza. Nincs kész: a CSP-ben még van `'unsafe-inline'` (mintegy 1390 soron belüli eseménykezelő maradt; az `addEventListener`-re való átállás nagyobb átalakítás). Új teszt: `tests/audit-r10.test.mjs`.
 - 1.3.6 — 2026-10-22: fff-kit 1.1.2: PBKDF2 600 000 iterációval, clickjacking elleni védelem
 - 1.3.1 — 2026-10-19: a gyors modulváltó (`Ctrl/Cmd+K`, a 🔍 gomb) a jegyzetek és a napló közti kereséssel, a címke nélküli vezérlők automatikus hozzáférhető nevei és a `.fff.json` másolat „utolsó mentés” kapcsai (mind fentebb leírva) megvannak a jelenlegi verzióban: egy korábbi takarításkor tévedésből eltávolították őket, és helyreállítottuk őket, szövegeik most 8 nyelven vannak. Javítva: az oldal CSP-jébe a `'unsafe-inline'` mellé került szkript-hash-ek miatt a böngésző minden beágyazott kezelőt (`onclick=` stb.) letiltott; a hash-eket eltávolítottuk, és a CSP a korábbiak szerint `script-src 'self' 'unsafe-inline' blob:` marad.
 

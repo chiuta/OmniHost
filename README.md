@@ -2,7 +2,7 @@
 
 **English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version:** 1.3.6 · **Last updated:** 2026-10-22
+**Version:** 1.3.7 · **Last updated:** 2026-10-22
 
 A personal productivity suite in a single HTML file ("quine"): notes, planner, finance, learning, tools and many modules, inspired by YunoHost.
 
@@ -79,6 +79,7 @@ MIT — see the LICENSE file. The "Licenses" page in the app, the file header an
 
 ## History / Changelog
 
+- 1.3.7 — 2026-10-22: security. The data (localStorage, the copy embedded in the file and every imported JSON or `.fff.json` backup) is now validated against a schema: IDs must match `^[A-Za-z0-9_-]{1,64}$`, types and sizes are checked, unsafe keys (`__proto__` …) and texts are repaired or removed, with a message in 8 languages. Every value coming from the data and placed in an inline handler or a template is escaped (`jsa()`/`esc()`), so a hostile backup can no longer run code or read `localStorage.omnihost_db`. The unencrypted `.fff.json` copy of the kit no longer contains passwords, 2FA keys or vault entries (the copy made with a password stays complete and encrypted); a note in Settings explains it. Not done: the CSP still has `'unsafe-inline'` (about 1,390 inline handlers remain; their migration to `addEventListener` is a larger refactor). New test: `tests/audit-r10.test.mjs`.
 - 1.3.6 — 2026-10-22: fff-kit 1.1.2: PBKDF2 600,000 iterations, anti-clickjacking protection
 - 1.3.1 — 2026-10-19: the quick module switcher (`Ctrl/Cmd+K`, the 🔍 button) with the search in notes and journal, the automatic accessible names for controls without a label and the "last backup" hooks of the `.fff.json` copy (all described above) are present in the current version: they had been removed by mistake in an earlier cleanup and were restored, with their texts now in 8 languages. Fixed: script hashes added to the page's CSP next to `'unsafe-inline'` made the browser block every inline handler (`onclick=` etc.); the hashes were removed and the CSP keeps `script-src 'self' 'unsafe-inline' blob:` as before.
 

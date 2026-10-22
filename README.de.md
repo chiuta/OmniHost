@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · **Deutsch** · [Magyar](README.hu.md)
 
-**Version:** 1.3.6 · **Zuletzt aktualisiert:** 2026-10-22
+**Version:** 1.3.7 · **Zuletzt aktualisiert:** 2026-10-22
 
 Persönliche Produktivitätssuite in einer einzigen HTML-Datei („Quine“): Notizen, Planer, Finanzen, Lernen, Werkzeuge und viele Module, inspiriert von YunoHost.
 
@@ -79,6 +79,7 @@ MIT — siehe Datei LICENSE. Die Seite „Licenses“ der App, der Dateikopf und
 
 ## Verlauf / Changelog
 
+- 1.3.7 — 2026-10-22: Sicherheit. Die Daten (localStorage, die in die Datei eingebettete Kopie und jede importierte JSON- oder `.fff.json`-Sicherung) werden jetzt gegen ein Schema geprüft: IDs müssen `^[A-Za-z0-9_-]{1,64}$` entsprechen, Typen und Größen werden kontrolliert, unsichere Schlüssel (`__proto__` …) und Texte werden repariert oder entfernt, mit einer Meldung in 8 Sprachen. Jeder Wert aus den Daten, der in einen Inline-Handler oder eine Vorlage eingesetzt wird, wird maskiert (`jsa()`/`esc()`); eine feindliche Sicherung kann damit weder Code ausführen noch `localStorage.omnihost_db` lesen. Die unverschlüsselte `.fff.json`-Sicherung des Kits enthält keine Passwörter, 2FA-Schlüssel und Tresoreinträge mehr (die Sicherung mit Passwort bleibt vollständig und verschlüsselt); ein Hinweis in den Einstellungen erklärt das. Nicht erledigt: Die CSP enthält weiterhin `'unsafe-inline'` (rund 1.390 Inline-Handler bleiben; die Umstellung auf `addEventListener` ist ein größeres Refactoring). Neuer Test: `tests/audit-r10.test.mjs`.
 - 1.3.6 — 2026-10-22: fff-kit 1.1.2: PBKDF2 mit 600.000 Iterationen, Schutz vor Clickjacking
 - 1.3.1 — 2026-10-19: der schnelle Modul-Umschalter (`Ctrl/Cmd+K`, die Schaltfläche 🔍) mit der Suche in Notizen und Tagebuch, die automatischen zugänglichen Namen für Steuerelemente ohne Beschriftung und die Hooks „letzte Sicherung“ der `.fff.json`-Kopie (alle oben beschrieben) sind in der aktuellen Version vorhanden: Sie waren bei einer früheren Bereinigung versehentlich entfernt worden und wurden wiederhergestellt, ihre Texte jetzt in 8 Sprachen. Behoben: Skript-Hashes, die der CSP der Seite neben `'unsafe-inline'` hinzugefügt worden waren, ließen den Browser alle Inline-Handler (`onclick=` usw.) blockieren; die Hashes wurden entfernt, und die CSP behält wie zuvor `script-src 'self' 'unsafe-inline' blob:`.
 

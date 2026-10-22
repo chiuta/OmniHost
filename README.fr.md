@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · **Français** · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version :** 1.3.6 · **Dernière mise à jour :** 2026-10-22
+**Version :** 1.3.7 · **Dernière mise à jour :** 2026-10-22
 
 Suite personnelle de productivité dans un seul fichier HTML (« quine ») : notes, planificateur, finances, apprentissage, outils et de nombreux modules, inspirée de YunoHost.
 
@@ -79,6 +79,7 @@ MIT — voir le fichier LICENSE. La page « Licenses » de l'application, l'en-t
 
 ## Historique / Changelog
 
+- 1.3.7 — 2026-10-22 : sécurité. Les données (localStorage, la copie intégrée au fichier et toute sauvegarde JSON ou `.fff.json` importée) sont désormais validées selon un schéma : les identifiants doivent respecter `^[A-Za-z0-9_-]{1,64}$`, les types et tailles sont vérifiés, les clés (`__proto__` …) et textes dangereux sont corrigés ou supprimés, avec un message en 8 langues. Toute valeur issue des données et placée dans un gestionnaire en ligne ou un modèle est échappée (`jsa()`/`esc()`) : une sauvegarde hostile ne peut plus exécuter de code ni lire `localStorage.omnihost_db`. La sauvegarde `.fff.json` non chiffrée du kit ne contient plus les mots de passe, les clés 2FA ni les entrées du coffre (la sauvegarde avec mot de passe reste complète et chiffrée) ; une note dans les Paramètres l'explique. Non fait : la CSP contient encore `'unsafe-inline'` (environ 1 390 gestionnaires en ligne subsistent ; leur migration vers `addEventListener` est un chantier plus important). Nouveau test : `tests/audit-r10.test.mjs`.
 - 1.3.6 — 2026-10-22 : fff-kit 1.1.2 : PBKDF2 à 600 000 itérations, protection anti-clickjacking
 - 1.3.1 — 2026-10-19 : le sélecteur rapide de modules (`Ctrl/Cmd+K`, le bouton 🔍) avec la recherche dans les notes et le journal, les noms accessibles automatiques pour les contrôles sans étiquette et les crochets « dernière sauvegarde » de la copie `.fff.json` (tous décrits ci-dessus) sont présents dans la version actuelle : ils avaient été supprimés par erreur lors d'un nettoyage antérieur et ont été restaurés, leurs textes étant désormais en 8 langues. Corrigé : des empreintes de script ajoutées à la CSP de la page à côté de `'unsafe-inline'` faisaient bloquer par le navigateur tous les gestionnaires en ligne (`onclick=` etc.) ; les empreintes ont été retirées et la CSP garde `script-src 'self' 'unsafe-inline' blob:` comme avant.
 

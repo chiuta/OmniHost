@@ -2,7 +2,7 @@
 
 [English](README.md) · **Română** · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versiune:** 1.3.6 · **Ultima actualizare:** 2026-10-22
+**Versiune:** 1.3.7 · **Ultima actualizare:** 2026-10-22
 
 Suită personală de productivitate într-un singur fișier HTML („quine"): notițe, planificator, finanțe, învățare, instrumente și multe module, inspirată de YunoHost.
 
@@ -79,6 +79,7 @@ MIT — vezi fișierul LICENSE. Pagina „Licenses” din aplicație, antetul fi
 
 ## Istoric / Changelog
 
+- 1.3.7 — 2026-10-22: securitate. Datele (localStorage, copia încorporată în fișier și orice copie JSON sau `.fff.json` importată) sunt acum validate pe o schemă: id-urile trebuie să respecte `^[A-Za-z0-9_-]{1,64}$`, se verifică tipurile și dimensiunile, cheile (`__proto__` …) și textele nesigure sunt reparate sau eliminate, cu mesaj în 8 limbi. Orice valoare venită din date și pusă într-un handler inline sau într-un șablon este escapată (`jsa()`/`esc()`), deci o copie ostilă nu mai poate rula cod și nici citi `localStorage.omnihost_db`. Copia `.fff.json` necriptată a kitului nu mai conține parole, chei 2FA și intrări din seif (copia făcută cu parolă rămâne completă și criptată); o notă în Setări explică acest lucru. Nefăcut: CSP are încă `'unsafe-inline'` (rămân circa 1.390 de handlere inline; migrarea lor la `addEventListener` e o refactorizare mai mare). Test nou: `tests/audit-r10.test.mjs`.
 - 1.3.6 — 2026-10-22: fff-kit 1.1.2: PBKDF2 600 000 iterații, protecție anti-clickjacking
 - 1.3.1 — 2026-10-19: comutatorul rapid de module (`Ctrl/Cmd+K`, butonul 🔍) cu căutarea în notițe și jurnal, numele accesibile automate pentru controalele fără etichetă și cârligele „ultima copie de siguranță” ale copiei `.fff.json` (toate descrise mai sus) sunt prezente în versiunea curentă: fuseseră eliminate din greșeală într-o curățare anterioară și au fost restaurate, cu textele lor acum în 8 limbi. Corectat: hash-urile de script adăugate în CSP-ul paginii alături de `'unsafe-inline'` făceau browserul să blocheze toate handlerele inline (`onclick=` etc.); hash-urile au fost eliminate, iar CSP păstrează `script-src 'self' 'unsafe-inline' blob:` ca înainte.
 
