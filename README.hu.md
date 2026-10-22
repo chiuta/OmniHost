@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · **Magyar**
 
-**Verzió:** 1.3.2 · **Utolsó frissítés:** 2026-10-22
+**Verzió:** 1.3.3 · **Utolsó frissítés:** 2026-10-22
 
 Személyes termelékenységi csomag egyetlen HTML-fájlban („quine”): jegyzetek, tervező, pénzügyek, tanulás, eszközök és sok modul, a YunoHost ihletésével.
 
@@ -109,6 +109,9 @@ Alexio — Alexandru-Ionuț Chiuță. Kapcsolat: alexio@trom.tf
 ## Összefoglaló
 
 Az OmniHost egy egyfájlos „quine” személyes termelékenységi csomag (jegyzetek, tervező, pénzügyek, tanulás, eszközök, biztonság és még sok más; 30 téma; felület 71 nyelven). Az adatok a HTML-fájlban és a localStorage-ban (`omnihost_db`) élnek; a „Save” letölti a beágyazott adatokat tartalmazó másolatot. A hálózathasználat az Open-Meteóra (műszerfal-időjárás, opt-in), a dictionaryapi.dev-re (szótár) és a MyMemoryra (fordítás) korlátozódik. MIT licenc.
+
+### 1.3.3 — 2026-10-22
+- A modulok dokumentációja (útmutatók és bemutatók) mind a 8 nyelvre le van fordítva, az üdvözlő tartalom (feladatok, napló, névjegyek, célok, receptek, tanulókártyák és egyéb demóadatok) pedig követi a felület nyelvét, később váltáskor is. A te szerkesztéseidet nem érinti; néhány modulfelirat is lefordult (az idézetek megtartják eredeti nyelvüket és a forrásmegjelölést).
 
 ### 1.3.2 — 2026-10-22
 - Az oldalsáv figyelmeztetése most egyetlen nyelven jelenik meg, az üdvözlő feladatok, a demó tevékenységfolyam, valamint néhány súgószöveg és felirat le van fordítva a felület nyelveire (az idézetek szövege és a többi demóadat változatlan marad).
