@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · **Español** · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versión:** 1.3.8 · **Última actualización:** 2026-10-22
+**Versión:** 1.3.9 · **Última actualización:** 2026-10-22
 
 Suite personal de productividad en un único archivo HTML («quine»): notas, planificador, finanzas, aprendizaje, herramientas y muchos módulos, inspirada en YunoHost.
 
@@ -71,13 +71,24 @@ Descarga `index.html` (y la carpeta `vendor/`, que contiene `jsQR.js` para el es
 
 ## Licencia
 
-MIT — consulta el archivo LICENSE. La página «Licenses» de la aplicación, la cabecera del archivo y los textos de la wiki dicen lo mismo (MIT). Los componentes de terceros (p. ej. jsQR, qrcodejs) siguen bajo sus propias licencias, enumeradas en la página «Licenses».
+MIT — consulta el archivo LICENSE. La página «Licenses» de la aplicación, la cabecera del archivo y los textos de la wiki dicen lo mismo (MIT). Los componentes de terceros (p. ej. jsQR, qrcodejs) siguen bajo sus propias licencias, enumeradas en la página «Licenses». NOTICE: la lista completa de componentes de terceros incorporados (jsQR 1.4.0 Apache-2.0; las fuentes JetBrains Mono, DM Sans, Playfair Display bajo SIL OFL 1.1; el logotipo Trade-Free; servicios en línea) con versiones y derechos de autor está en [NOTICE.md](NOTICE.md).
 
 ## Auditoría
 
 2026-10-10: verificado en el navegador (0 errores de JS; en esa fecha existía una solicitud automática a Open-Meteo, ahora eliminada). Corregido un XSS almacenado (los campos `priority` de las tareas y `module` del feed) que podía activarse mediante una importación JSON maliciosa, además de accesibilidad (nombres de controles, contraste, listas Markdown). Ronda 2 (2026-10-11): licencia unificada hacia CC0 (página «Licenses», wiki, flashcard); el tiempo en el Dashboard es ahora opt-in (ninguna solicitud automática al cargar); el texto estático «nothing is sent anywhere» de la tarjeta About se alineó con el de i18n; claves de prueba de Stripe sustituidas por un marcador de posición.
 
 ## Historial / Changelog
+
+### 1.3.9 — 2026-10-22
+
+Seguridad: sin manejadores inline, CSP estricta, contraseña maestra opcional.
+
+- **Delegación de eventos:** los 1.395 manejadores inline (`onclick=`, `onchange=`, `oninput=` etc., en el HTML estático y en las plantillas JS) se sustituyeron por atributos `data-act` / `data-a1…` y un único despachador en `document`, que llama a funciones de una tabla de acciones permitidas (455 acciones). El comportamiento no cambia (comprobado con un lector automático de equivalencia: 1.190 de 1.191 sitios distintos idénticos; única diferencia, el generador aleatorio de contraseñas).
+- **CSP estricta:** se quitó `'unsafe-inline'` de `script-src` (solo `'self' blob:` y hashes sha256 de los scripts inline reales); se eliminó la excepción de `fff.config.json`; `fixcsp`, `info` y `check` estricto pasan sin excepciones. «Save Minified» ya no reescribe los scripts (invalidaría los hashes). `style-src` aún permite `'unsafe-inline'`.
+- **Contraseña maestra opcional** (Ajustes): cifra los campos sensibles (contraseñas, claves 2FA, entradas de la caja fuerte) con AES-256-GCM, PBKDF2-SHA256 con 600.000 iteraciones, sal/IV distintos por campo; se pide en el primer acceso al módulo, se guarda solo en memoria durante la sesión (bloqueo automático tras 15 min de inactividad); cambio, desactivación, migración desde texto plano; mensajes en 8 idiomas. La copia `.fff.json` conserva estos campos cifrados. Sin recuperación: una contraseña maestra perdida solo se restablece borrando los datos protegidos.
+- Los cuadros nativos `confirm`/`prompt` se sustituyeron por diálogos en la página (módulo común `dialog`); traducciones de la interfaz completadas (paridad i18n).
+- Añadido `NOTICE.md` (componentes de terceros). Corregido: la descarga del Scratchpad usaba por error `document.URL`.
+- Pruebas: `tests/master-pw.test.mjs` (nuevo), `audit-r10`, `fff-r8` y `restore-r6` actualizadas/superadas.
 
 ### 1.3.8 — 2026-10-22
 

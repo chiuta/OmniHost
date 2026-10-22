@@ -2,7 +2,7 @@
 
 [English](README.md) · **Română** · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versiune:** 1.3.8 · **Ultima actualizare:** 2026-10-22
+**Versiune:** 1.3.9 · **Ultima actualizare:** 2026-10-22
 
 Suită personală de productivitate într-un singur fișier HTML („quine"): notițe, planificator, finanțe, învățare, instrumente și multe module, inspirată de YunoHost.
 
@@ -71,13 +71,24 @@ Descărcați `index.html` (și folderul `vendor/`, care conține `jsQR.js` pentr
 
 ## Licență
 
-MIT — vezi fișierul LICENSE. Pagina „Licenses” din aplicație, antetul fișierului și textele din wiki spun același lucru (MIT). Componentele terțe (de ex. jsQR, qrcodejs) rămân sub licențele lor proprii, listate în pagina „Licenses”.
+MIT — vezi fișierul LICENSE. Pagina „Licenses” din aplicație, antetul fișierului și textele din wiki spun același lucru (MIT). Componentele terțe (de ex. jsQR, qrcodejs) rămân sub licențele lor proprii, listate în pagina „Licenses”. NOTICE: lista completă a componentelor terțe încorporate (jsQR 1.4.0 Apache-2.0; fonturile JetBrains Mono, DM Sans, Playfair Display sub SIL OFL 1.1; sigla Trade-Free; servicii online) cu versiuni și drepturi de autor este în [NOTICE.md](NOTICE.md).
 
 ## Audit
 
 2026-10-10: verificat în browser (0 erori JS; la acea dată exista o cerere automată către Open-Meteo, acum eliminată). Corectat un XSS stocat (câmpurile `priority` din sarcini și `module` din feed) care putea fi declanșat printr-un import JSON malițios, plus accesibilitate (nume pentru controale, contrast, liste Markdown). Runda 2 (2026-10-11): licența unificată spre CC0 (pagina „Licenses", wiki, flashcard); vremea pe Dashboard este acum opt-in (nicio cerere automată la încărcare); textul static „nothing is sent anywhere" din cardul About a fost aliniat la cel din i18n; cheile de test Stripe înlocuite cu placeholder.
 
 ## Istoric / Changelog
+
+### 1.3.9 — 2026-10-22
+
+Securitate: fără handlere inline, CSP strict, parolă principală opțională.
+
+- **Delegare de evenimente:** toate cele 1.395 de handlere inline (`onclick=`, `onchange=`, `oninput=` etc., din HTML-ul static și din șabloanele JS) au fost înlocuite cu atribute `data-act` / `data-a1…` și un singur dispecer pe `document`, care apelează funcții dintr-un tabel de acțiuni permise (455 de acțiuni). Comportamentul este neschimbat (verificat cu un cititor automat de echivalență: 1.190 din 1.191 de locuri distincte identice; singura diferență este generatorul aleator de parole).
+- **CSP strict:** `'unsafe-inline'` a fost scos din `script-src` (doar `'self' blob:` și hash-uri sha256 pentru scripturile inline reale); excepția a fost eliminată din `fff.config.json`; `fixcsp`, `info` și `check` strict trec fără excepții. „Save Minified” nu mai rescrie scripturile (ar invalida hash-urile). `style-src` mai permite `'unsafe-inline'`.
+- **Parolă principală opțională** (Setări): criptează câmpurile sensibile (parole, chei 2FA, intrări din seif) cu AES-256-GCM, PBKDF2-SHA256 cu 600.000 de iterații, sare/IV separate pe câmp; cerută la prima accesare a modulului, ținută doar în memorie pe durata sesiunii (blocare automată după 15 min de inactivitate); schimbare, dezactivare, migrare din text clar; mesaje în 8 limbi. Copia `.fff.json` păstrează aceste câmpuri criptate. Nu există recuperare: o parolă principală pierdută nu poate fi resetată decât ștergând datele protejate.
+- Dialogurile native `confirm`/`prompt` au fost înlocuite cu dialoguri în pagină (modulul comun `dialog`); traducerile interfeței au fost completate (paritate i18n).
+- Adăugat `NOTICE.md` (componente terțe). Corectat: descărcarea din Scratchpad folosea din greșeală `document.URL`.
+- Teste: `tests/master-pw.test.mjs` (nou), `audit-r10`, `fff-r8` și `restore-r6` actualizate/trecute.
 
 ### 1.3.8 — 2026-10-22
 

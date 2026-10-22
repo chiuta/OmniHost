@@ -2,7 +2,7 @@
 
 **English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version:** 1.3.8 · **Last updated:** 2026-10-22
+**Version:** 1.3.9 · **Last updated:** 2026-10-22
 
 A personal productivity suite in a single HTML file ("quine"): notes, planner, finance, learning, tools and many modules, inspired by YunoHost.
 
@@ -71,13 +71,24 @@ Download `index.html` (and the `vendor/` folder, which contains `jsQR.js` for th
 
 ## License
 
-MIT — see the LICENSE file. The "Licenses" page in the app, the file header and the wiki texts say the same (MIT). Third-party components (e.g. jsQR, qrcodejs) remain under their own licenses, listed on the "Licenses" page.
+MIT — see the LICENSE file. The "Licenses" page in the app, the file header and the wiki texts say the same (MIT). Third-party components (e.g. jsQR, qrcodejs) remain under their own licenses, listed on the "Licenses" page. NOTICE: the complete list of embedded third-party components (jsQR 1.4.0 Apache-2.0; the fonts JetBrains Mono, DM Sans, Playfair Display under SIL OFL 1.1; the Trade-Free logo; online services) with versions and copyrights is in [NOTICE.md](NOTICE.md).
 
 ## Audit
 
 2026-10-10: verified in the browser (0 JS errors; at that date there was an automatic request to Open-Meteo, now removed). Fixed a stored XSS (the `priority` fields of tasks and `module` of the feed) that could be triggered through a malicious JSON import, plus accessibility (names for controls, contrast, Markdown lists). Round 2 (2026-10-11): the license unified to CC0 (the "Licenses" page, wiki, flashcard); the weather on the Dashboard is now opt-in (no automatic request at load); the static text "nothing is sent anywhere" in the About card was aligned with the one in i18n; the Stripe test keys replaced with a placeholder.
 
 ## History / Changelog
+
+### 1.3.9 — 2026-10-22
+
+Security: no more inline handlers, strict CSP, optional master password.
+
+- **Event delegation:** all 1,395 inline handlers (`onclick=`, `onchange=`, `oninput=` etc., in the static HTML and in the JS templates) were replaced by `data-act` / `data-a1…` attributes and a single dispatcher on `document` that calls functions from a whitelist table (455 actions). Behaviour is unchanged (checked by an automatic equivalence reader: 1,190 of 1,191 distinct sites identical, the only difference being the random password generator).
+- **Strict CSP:** `'unsafe-inline'` was removed from `script-src` (only `'self' blob:` and sha256 hashes of the real inline scripts); the exception was removed from `fff.config.json`; `fixcsp`, `info` and the strict `check` pass without exceptions. “Save Minified” no longer rewrites scripts (it would invalidate the hashes). `style-src` still allows `'unsafe-inline'`.
+- **Optional master password** (Settings): encrypts the sensitive fields (passwords, 2FA keys, vault entries) with AES-256-GCM, PBKDF2-SHA256 600,000 iterations, a separate salt/IV per field; asked at the first access to the module, kept only in memory for the session (auto-lock after 15 min idle); change, disable, migration from plain text; messages in 8 languages. The `.fff.json` copy keeps these fields encrypted. There is no recovery: a lost master password cannot be reset except by erasing the protected data.
+- The native `confirm`/`prompt` dialogs were replaced by in-page dialogs (shared `dialog` module); interface translations completed (i18n parity).
+- Added `NOTICE.md` (third-party components). Fixed: the Scratchpad download used `document.URL` by mistake.
+- Tests: `tests/master-pw.test.mjs` (new), `audit-r10`, `fff-r8` and `restore-r6` updated/passing.
 
 ### 1.3.8 — 2026-10-22
 

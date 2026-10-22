@@ -1,10 +1,4 @@
 {
   "selfModifying": true,
-  "egressNote": "Datele rămân local. Cereri externe (dicționar, traducere, vreme/geocodare) pleacă doar când folosiți modulele respective.",
-  "cspExceptions": [
-    {
-      "rule": "script-unsafe-inline",
-      "reason": "1394 handlere inline (onclick etc.) în marcaj; refactorizare către addEventListener planificată"
-    }
-  ]
+  "egressNote": "Datele rămân local. Cereri externe (dicționar, traducere, vreme/geocodare) pleacă doar când folosiți modulele respective."
 }

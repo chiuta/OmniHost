@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · **Português** · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versão:** 1.3.8 · **Última atualização:** 2026-10-22
+**Versão:** 1.3.9 · **Última atualização:** 2026-10-22
 
 Suíte pessoal de produtividade num único ficheiro HTML («quine»): notas, planeador, finanças, aprendizagem, ferramentas e muitos módulos, inspirada no YunoHost.
 
@@ -71,13 +71,24 @@ Transfere `index.html` (e a pasta `vendor/`, que contém `jsQR.js` para o leitor
 
 ## Licença
 
-MIT — ver o ficheiro LICENSE. A página «Licenses» da aplicação, o cabeçalho do ficheiro e os textos da wiki dizem o mesmo (MIT). Os componentes de terceiros (p. ex. jsQR, qrcodejs) mantêm-se sob as suas próprias licenças, listadas na página «Licenses».
+MIT — ver o ficheiro LICENSE. A página «Licenses» da aplicação, o cabeçalho do ficheiro e os textos da wiki dizem o mesmo (MIT). Os componentes de terceiros (p. ex. jsQR, qrcodejs) mantêm-se sob as suas próprias licenças, listadas na página «Licenses». NOTICE: a lista completa dos componentes de terceiros incorporados (jsQR 1.4.0 Apache-2.0; as fontes JetBrains Mono, DM Sans, Playfair Display sob SIL OFL 1.1; o logótipo Trade-Free; serviços online) com versões e direitos de autor está em [NOTICE.md](NOTICE.md).
 
 ## Auditoria
 
 2026-10-10: verificado no navegador (0 erros de JS; nessa data existia um pedido automático ao Open-Meteo, entretanto removido). Corrigido um XSS armazenado (os campos `priority` das tarefas e `module` do feed) que podia ser desencadeado por uma importação JSON maliciosa, além de acessibilidade (nomes para controlos, contraste, listas Markdown). Ronda 2 (2026-10-11): licença unificada para CC0 (página «Licenses», wiki, flashcard); a meteorologia no Dashboard é agora opt-in (nenhum pedido automático ao carregar); o texto estático «nothing is sent anywhere» do cartão About foi alinhado com o do i18n; chaves de teste Stripe substituídas por um marcador.
 
 ## Histórico / Changelog
+
+### 1.3.9 — 2026-10-22
+
+Segurança: sem manipuladores inline, CSP rigorosa, palavra-passe principal opcional.
+
+- **Delegação de eventos:** os 1.395 manipuladores inline (`onclick=`, `onchange=`, `oninput=` etc., no HTML estático e nos modelos JS) foram substituídos por atributos `data-act` / `data-a1…` e um único despachante em `document`, que chama funções de uma tabela de ações permitidas (455 ações). O comportamento não muda (verificado com um leitor automático de equivalência: 1.190 de 1.191 locais distintos idênticos; única diferença, o gerador aleatório de palavras-passe).
+- **CSP rigorosa:** `'unsafe-inline'` foi removido de `script-src` (apenas `'self' blob:` e hashes sha256 dos scripts inline reais); a exceção foi removida de `fff.config.json`; `fixcsp`, `info` e `check` rigoroso passam sem exceções. «Save Minified» já não reescreve os scripts (invalidaria os hashes). `style-src` ainda permite `'unsafe-inline'`.
+- **Palavra-passe principal opcional** (Definições): cifra os campos sensíveis (palavras-passe, chaves 2FA, entradas do cofre) com AES-256-GCM, PBKDF2-SHA256 com 600.000 iterações, sal/IV distintos por campo; pedida no primeiro acesso ao módulo, mantida apenas em memória durante a sessão (bloqueio automático após 15 min de inatividade); alteração, desativação, migração do texto simples; mensagens em 8 idiomas. A cópia `.fff.json` mantém estes campos cifrados. Sem recuperação: uma palavra-passe principal perdida só se repõe apagando os dados protegidos.
+- As caixas nativas `confirm`/`prompt` foram substituídas por diálogos na página (módulo comum `dialog`); traduções da interface completadas (paridade i18n).
+- Adicionado `NOTICE.md` (componentes de terceiros). Corrigido: a transferência do Scratchpad usava por engano `document.URL`.
+- Testes: `tests/master-pw.test.mjs` (novo), `audit-r10`, `fff-r8` e `restore-r6` atualizados/aprovados.
 
 ### 1.3.8 — 2026-10-22
 

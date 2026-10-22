@@ -46,7 +46,7 @@ async function clickAll(page, pageIds) {
     await page.evaluate((p) => goTo(p), pg).catch(() => {});
     await page.waitForTimeout(40);
     await page.evaluate(() => {
-      [...document.querySelectorAll('[onclick]')].slice(0, 60).forEach((e) => { try { e.click(); } catch (x) {} try { document.getElementById('modal').classList.remove('show'); } catch (x) {} });
+      [...document.querySelectorAll('[onclick],[data-act]')].slice(0, 60).forEach((e) => { try { e.click(); } catch (x) {} try { document.getElementById('modal').classList.remove('show'); } catch (x) {} });
     }).catch(() => {});
   }
 }
@@ -95,7 +95,7 @@ console.log('— încărcare din localStorage (copie ostilă) și import prin ki
   await clickAll(page, ['notes', 'tasks', 'passwords']);
   check('localStorage ostil: nicio navigare', (await page.evaluate(() => location.href)).startsWith('file:') && !net.some((u) => /\/\/x\//.test(u)), net);
   // kit
-  const bundle = JSON.stringify({format: 'fff-bundle', schema: 1, app: 'omnihost', version: '1.3.8', updated: '2026-10-22', exported: new Date().toISOString(), data: {omnihost_db: JSON.stringify(Object.assign(JSON.parse(bad), {_persistTime: Date.now() + 2e9}))}});
+  const bundle = JSON.stringify({format: 'fff-bundle', schema: 1, app: 'omnihost', version: '1.3.9', updated: '2026-10-22', exported: new Date().toISOString(), data: {omnihost_db: JSON.stringify(Object.assign(JSON.parse(bad), {_persistTime: Date.now() + 2e9}))}});
   await Promise.all([page.waitForNavigation({waitUntil: 'load', timeout: 15000}).catch(() => null), page.evaluate((t) => FFF.bundle.import(new File([t], 'o.fff.json', {type: 'application/json'}), {confirm: false, reload: true}), bundle).catch(() => null)]);
   await page.waitForTimeout(1800);
   const ids2 = await page.evaluate(() => [...DB.notes, ...DB.tasks, ...DB.passwords].map((x) => x.id));
@@ -191,6 +191,9 @@ console.log('— fuzz: toate câmpurile text din toate colecțiile = payload; vi
     (shapes[m[1]] = shapes[m[1]] || new Set());
     keys.forEach((k) => { const mm = /^\s*([A-Za-z_]\w*)\s*(:|$)/.exec(k); if (mm) shapes[m[1]].add(mm[1]); });
   }
+  // câmpurile sensibile se creează acum prin ohSecSet (obiect intermediar): le adăugăm explicit ca să rămână în fuzz
+  const extra = {passwords: ['id', 'title', 'username', 'password', 'url', 'created', 'updated'], totpKeys: ['id', 'name', 'secret', 'issuer', 'created'], vaultEntries: ['id', 'title', 'category', 'icon', 'data', 'created']};
+  for (const [k, v] of Object.entries(extra)) { (shapes[k] = shapes[k] || new Set()); v.forEach((f) => shapes[k].add(f)); }
   const sh = Object.fromEntries(Object.entries(shapes).map(([k, v]) => [k, [...v]]));
   const NUM = /amount|steps|price|weight|reps|sets|level|severity|minutes|duration|progress|qty|quantity|count|calories|score|rating|size|interval|ease|waterDays|budget|balance|total|cost|hours|distance|goal|days|year|bpm|spent|limit|target|current|number|min|max|pages|volume|temp|pressure|mood|sleep|glasses|ml|cups|streak|due/i.source;
   async function fresh() {
@@ -227,7 +230,9 @@ console.log('— CSP și handlere inline (informativ)');
 {
   const inl = (SRC.match(/\son[a-z]+="/g) || []).length;
   const csp = /Content-Security-Policy" content="([^"]*)"/.exec(SRC)[1];
-  console.log('  info handlere inline în sursă: ' + inl + ' · script-src: ' + /script-src([^;]*)/.exec(csp)[1].trim());
+  const ss = /script-src([^;]*)/.exec(csp)[1];
+  check('0 handlere inline (on*="…") în sursă — evenimentele trec prin delegare (data-act)', inl === 0, inl);
+  check("CSP: script-src fără 'unsafe-inline' (doar hash-uri)", !/'unsafe-inline'/.test(ss) && /'sha256-/.test(ss), ss.trim());
   check('CSP: connect-src fără gazde neașteptate', !/connect-src[^;]*(\*|http:)/.test(csp));
 }
 

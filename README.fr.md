@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · **Français** · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version :** 1.3.8 · **Dernière mise à jour :** 2026-10-22
+**Version :** 1.3.9 · **Dernière mise à jour :** 2026-10-22
 
 Suite personnelle de productivité dans un seul fichier HTML (« quine ») : notes, planificateur, finances, apprentissage, outils et de nombreux modules, inspirée de YunoHost.
 
@@ -71,13 +71,24 @@ Téléchargez `index.html` (et le dossier `vendor/`, qui contient `jsQR.js` pour
 
 ## Licence
 
-MIT — voir le fichier LICENSE. La page « Licenses » de l'application, l'en-tête du fichier et les textes du wiki disent la même chose (MIT). Les composants tiers (p. ex. jsQR, qrcodejs) restent sous leurs propres licences, listées sur la page « Licenses ».
+MIT — voir le fichier LICENSE. La page « Licenses » de l'application, l'en-tête du fichier et les textes du wiki disent la même chose (MIT). Les composants tiers (p. ex. jsQR, qrcodejs) restent sous leurs propres licences, listées sur la page « Licenses ». NOTICE : la liste complète des composants tiers intégrés (jsQR 1.4.0 Apache-2.0 ; les polices JetBrains Mono, DM Sans, Playfair Display sous SIL OFL 1.1 ; le logo Trade-Free ; services en ligne) avec versions et droits d'auteur se trouve dans [NOTICE.md](NOTICE.md).
 
 ## Audit
 
 2026-10-10 : vérifié dans le navigateur (0 erreur JS ; à cette date il existait une requête automatique vers Open-Meteo, désormais supprimée). Correction d'une XSS stockée (les champs `priority` des tâches et `module` du flux) qui pouvait être déclenchée par un import JSON malveillant, ainsi que l'accessibilité (noms des contrôles, contraste, listes Markdown). Tour 2 (2026-10-11) : licence unifiée vers CC0 (page « Licenses », wiki, flashcard) ; la météo du Dashboard est désormais en opt-in (aucune requête automatique au chargement) ; le texte statique « nothing is sent anywhere » de la carte About a été aligné sur celui de l'i18n ; clés de test Stripe remplacées par un espace réservé.
 
 ## Historique / Changelog
+
+### 1.3.9 — 2026-10-22
+
+Sécurité : plus de gestionnaires inline, CSP stricte, mot de passe principal facultatif.
+
+- **Délégation d'événements :** les 1 395 gestionnaires inline (`onclick=`, `onchange=`, `oninput=` etc., dans le HTML statique et les gabarits JS) ont été remplacés par des attributs `data-act` / `data-a1…` et un seul répartiteur sur `document`, qui appelle des fonctions d'une table d'actions autorisées (455 actions). Le comportement est inchangé (vérifié par un lecteur d'équivalence automatique : 1 190 sites distincts sur 1 191 identiques ; seule différence, le générateur aléatoire de mots de passe).
+- **CSP stricte :** `'unsafe-inline'` a été retiré de `script-src` (seulement `'self' blob:` et des empreintes sha256 des vrais scripts inline) ; l'exception a été supprimée de `fff.config.json` ; `fixcsp`, `info` et `check` strict passent sans exception. « Save Minified » ne réécrit plus les scripts (cela invaliderait les empreintes). `style-src` autorise encore `'unsafe-inline'`.
+- **Mot de passe principal facultatif** (Réglages) : chiffre les champs sensibles (mots de passe, clés 2FA, entrées du coffre) avec AES-256-GCM, PBKDF2-SHA256 à 600 000 itérations, sel/IV distincts par champ ; demandé au premier accès au module, gardé en mémoire seulement pendant la session (verrouillage automatique après 15 min d'inactivité) ; changement, désactivation, migration depuis le texte clair ; messages en 8 langues. La copie `.fff.json` garde ces champs chiffrés. Aucune récupération : un mot de passe principal perdu ne peut être réinitialisé qu'en effaçant les données protégées.
+- Les boîtes natives `confirm`/`prompt` ont été remplacées par des dialogues dans la page (module commun `dialog`) ; traductions de l'interface complétées (parité i18n).
+- Ajout de `NOTICE.md` (composants tiers). Corrigé : le téléchargement du Scratchpad utilisait par erreur `document.URL`.
+- Tests : `tests/master-pw.test.mjs` (nouveau), `audit-r10`, `fff-r8` et `restore-r6` mis à jour/réussis.
 
 ### 1.3.8 — 2026-10-22
 

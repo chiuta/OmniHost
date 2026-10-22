@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · **Magyar**
 
-**Verzió:** 1.3.8 · **Utolsó frissítés:** 2026-10-22
+**Verzió:** 1.3.9 · **Utolsó frissítés:** 2026-10-22
 
 Személyes termelékenységi csomag egyetlen HTML-fájlban („quine”): jegyzetek, tervező, pénzügyek, tanulás, eszközök és sok modul, a YunoHost ihletésével.
 
@@ -71,13 +71,24 @@ Töltsd le az `index.html` fájlt (és a `vendor/` mappát, amely a QR-olvasóho
 
 ## Licenc
 
-MIT — lásd a LICENSE fájlt. Az alkalmazás „Licenses” oldala, a fájl fejléce és a wiki szövegei ugyanezt mondják (MIT). A harmadik felek komponensei (pl. jsQR, qrcodejs) a saját licencük alatt maradnak, amelyeket a „Licenses” oldal sorol fel.
+MIT — lásd a LICENSE fájlt. Az alkalmazás „Licenses” oldala, a fájl fejléce és a wiki szövegei ugyanezt mondják (MIT). A harmadik felek komponensei (pl. jsQR, qrcodejs) a saját licencük alatt maradnak, amelyeket a „Licenses” oldal sorol fel. NOTICE: a beágyazott külső komponensek teljes listája (jsQR 1.4.0 Apache-2.0; a JetBrains Mono, DM Sans, Playfair Display betűtípusok SIL OFL 1.1 alatt; a Trade-Free logó; online szolgáltatások) verziókkal és szerzői jogi adatokkal a [NOTICE.md](NOTICE.md) fájlban van.
 
 ## Audit
 
 2026-10-10: böngészőben ellenőrizve (0 JS-hiba; az adott időpontban volt egy automatikus kérés az Open-Meteo felé, ez azóta megszűnt). Javítottunk egy tárolt XSS-t (a feladatok `priority` és a hírfolyam `module` mezői), amelyet egy rosszindulatú JSON-importtal ki lehetett váltani, valamint az akadálymentességet (a vezérlők nevei, kontraszt, Markdown-listák). 2. kör (2026-10-11): a licenc egységesítve CC0 felé („Licenses” oldal, wiki, flashcard); a Dashboard időjárása mostantól opt-in (betöltéskor nincs automatikus kérés); az About kártya „nothing is sent anywhere” statikus szövegét összehangoltuk az i18n-ben lévővel; a Stripe-tesztkulcsok helyőrzőre cserélve.
 
 ## Előzmények / Changelog
+
+### 1.3.9 — 2026-10-22
+
+Biztonság: nincs több inline eseménykezelő, szigorú CSP, opcionális mesterjelszó.
+
+- **Eseménydelegálás:** mind az 1 395 inline eseménykezelő (`onclick=`, `onchange=`, `oninput=` stb., a statikus HTML-ben és a JS-sablonokban) helyére `data-act` / `data-a1…` attribútumok és egyetlen, a `document`-en lévő elosztó került, amely egy engedélyezett műveleti táblázat függvényeit hívja (455 művelet). A viselkedés változatlan (automatikus egyenértékűségi olvasóval ellenőrizve: az 1 191 különböző helyből 1 190 azonos; az egyetlen eltérés a véletlen jelszógenerátor).
+- **Szigorú CSP:** a `'unsafe-inline'` kikerült a `script-src`-ből (csak `'self' blob:` és a valódi inline szkriptek sha256-hash-ei); a kivétel törölve az `fff.config.json`-ból; a `fixcsp`, az `info` és a szigorú `check` kivétel nélkül átmegy. A „Save Minified” már nem írja át a szkripteket (érvénytelenítené a hash-eket). A `style-src` még engedi a `'unsafe-inline'`-t.
+- **Opcionális mesterjelszó** (Beállítások): AES-256-GCM-mel, 600 000 iterációs PBKDF2-SHA256-tal titkosítja az érzékeny mezőket (jelszavak, 2FA-kulcsok, széf-bejegyzések), mezőnként külön sóval/IV-vel; a modul első elérésekor kéri, csak a memóriában tartja a munkamenet alatt (15 perc tétlenség után automatikus zárolás); módosítás, kikapcsolás, átállás nyílt szövegről; üzenetek 8 nyelven. A `.fff.json` másolat titkosítva tartja ezeket a mezőket. Nincs visszaállítás: az elveszett mesterjelszót csak a védett adatok törlésével lehet alaphelyzetbe állítani.
+- A natív `confirm`/`prompt` ablakokat az oldalba ágyazott párbeszédek váltották (közös `dialog` modul); a felület fordításai kiegészítve (i18n-paritás).
+- Új `NOTICE.md` (külső komponensek). Javítva: a Scratchpad letöltése tévesen a `document.URL`-t használta.
+- Tesztek: `tests/master-pw.test.mjs` (új), frissített/sikeres `audit-r10`, `fff-r8` és `restore-r6`.
 
 ### 1.3.8 — 2026-10-22
 

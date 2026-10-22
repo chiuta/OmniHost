@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · **Deutsch** · [Magyar](README.hu.md)
 
-**Version:** 1.3.8 · **Zuletzt aktualisiert:** 2026-10-22
+**Version:** 1.3.9 · **Zuletzt aktualisiert:** 2026-10-22
 
 Persönliche Produktivitätssuite in einer einzigen HTML-Datei („Quine“): Notizen, Planer, Finanzen, Lernen, Werkzeuge und viele Module, inspiriert von YunoHost.
 
@@ -71,13 +71,24 @@ Lade `index.html` herunter (und den Ordner `vendor/`, der `jsQR.js` für den QR-
 
 ## Lizenz
 
-MIT — siehe Datei LICENSE. Die Seite „Licenses“ der App, der Dateikopf und die Wiki-Texte sagen dasselbe (MIT). Komponenten Dritter (z. B. jsQR, qrcodejs) bleiben unter ihren eigenen Lizenzen, aufgeführt auf der Seite „Licenses“.
+MIT — siehe Datei LICENSE. Die Seite „Licenses“ der App, der Dateikopf und die Wiki-Texte sagen dasselbe (MIT). Komponenten Dritter (z. B. jsQR, qrcodejs) bleiben unter ihren eigenen Lizenzen, aufgeführt auf der Seite „Licenses“. NOTICE: Die vollständige Liste der eingebetteten Drittkomponenten (jsQR 1.4.0 Apache-2.0; die Schriften JetBrains Mono, DM Sans, Playfair Display unter SIL OFL 1.1; das Trade-Free-Logo; Online-Dienste) mit Versionen und Urheberrechten steht in [NOTICE.md](NOTICE.md).
 
 ## Audit
 
 2026-10-10: im Browser geprüft (0 JS-Fehler; zu diesem Zeitpunkt gab es eine automatische Anfrage an Open-Meteo, inzwischen entfernt). Eine gespeicherte XSS behoben (die Felder `priority` der Aufgaben und `module` des Feeds), die durch einen bösartigen JSON-Import ausgelöst werden konnte, dazu Barrierefreiheit (Namen für Bedienelemente, Kontrast, Markdown-Listen). Runde 2 (2026-10-11): Lizenz vereinheitlicht zu CC0 (Seite „Licenses“, Wiki, Flashcard); das Wetter im Dashboard ist jetzt Opt-in (keine automatische Anfrage beim Laden); der statische Text „nothing is sent anywhere“ in der About-Karte wurde an den aus i18n angeglichen; Stripe-Testschlüssel durch einen Platzhalter ersetzt.
 
 ## Verlauf / Changelog
+
+### 1.3.9 — 2026-10-22
+
+Sicherheit: keine Inline-Handler mehr, strenge CSP, optionales Master-Passwort.
+
+- **Ereignisdelegation:** Alle 1.395 Inline-Handler (`onclick=`, `onchange=`, `oninput=` usw., im statischen HTML und in den JS-Vorlagen) wurden durch `data-act`- / `data-a1…`-Attribute und einen einzigen Dispatcher auf `document` ersetzt, der Funktionen aus einer Whitelist-Tabelle aufruft (455 Aktionen). Das Verhalten ist unverändert (geprüft mit einem automatischen Äquivalenzleser: 1.190 von 1.191 verschiedenen Stellen identisch; einziger Unterschied: der Zufallsgenerator für Passwörter).
+- **Strenge CSP:** `'unsafe-inline'` wurde aus `script-src` entfernt (nur `'self' blob:` und sha256-Hashes der echten Inline-Skripte); die Ausnahme in `fff.config.json` wurde entfernt; `fixcsp`, `info` und striktes `check` laufen ohne Ausnahmen durch. „Save Minified“ schreibt Skripte nicht mehr um (die Hashes würden ungültig). `style-src` erlaubt weiterhin `'unsafe-inline'`.
+- **Optionales Master-Passwort** (Einstellungen): verschlüsselt die sensiblen Felder (Passwörter, 2FA-Schlüssel, Tresoreinträge) mit AES-256-GCM, PBKDF2-SHA256 mit 600.000 Iterationen, eigener Salt/IV pro Feld; wird beim ersten Zugriff auf das Modul abgefragt, nur im Speicher der Sitzung gehalten (automatische Sperre nach 15 Min. Inaktivität); Ändern, Deaktivieren, Migration aus Klartext; Meldungen in 8 Sprachen. Die `.fff.json`-Kopie behält diese Felder verschlüsselt. Keine Wiederherstellung: ein verlorenes Master-Passwort lässt sich nur durch Löschen der geschützten Daten zurücksetzen.
+- Die nativen `confirm`/`prompt`-Dialoge wurden durch Dialoge in der Seite ersetzt (gemeinsames Modul `dialog`); Oberflächenübersetzungen vervollständigt (i18n-Parität).
+- `NOTICE.md` hinzugefügt (Drittkomponenten). Behoben: Der Scratchpad-Download verwendete fälschlich `document.URL`.
+- Tests: `tests/master-pw.test.mjs` (neu), `audit-r10`, `fff-r8` und `restore-r6` aktualisiert/bestanden.
 
 ### 1.3.8 — 2026-10-22
 
