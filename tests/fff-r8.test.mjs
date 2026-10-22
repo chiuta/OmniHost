@@ -30,8 +30,8 @@ console.log('— metadate și kit');
 {
   const {ctx, page, errs, net} = await open();
   const m = await page.evaluate(() => ({v: document.querySelector('meta[name=application-version]').content, d: document.querySelector('meta[name=last-updated]').content, ft: document.getElementById('app-version').textContent, mods: document.querySelector('meta[name=fff-modules]')?.content, kit: !!(window.FFF && FFF.search && FFF.bundle && FFF.label)}));
-  check('versiune 1.3.3 și data', m.v === '1.3.3' && m.d === '2026-10-22', m);
-  check('footer cu versiune', /v 1\.3\.3 · 2026-10-22/.test(m.ft), m.ft);
+  check('versiune 1.3.4 și data', m.v === '1.3.4' && m.d === '2026-10-22', m);
+  check('footer cu versiune', /v 1\.3\.4 · 2026-10-22/.test(m.ft), m.ft);
   check('module kit', m.mods === 'core,label,bundle,search' && m.kit, m);
   check('fără erori JS/CSP', errs.length === 0, errs);
   check('fără cereri de rețea la încărcare', net.length === 0, net);
