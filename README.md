@@ -2,7 +2,7 @@
 
 **English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version:** 1.3.5 · **Last updated:** 2026-10-22
+**Version:** 1.3.6 · **Last updated:** 2026-10-22
 
 A personal productivity suite in a single HTML file ("quine"): notes, planner, finance, learning, tools and many modules, inspired by YunoHost.
 
@@ -79,6 +79,7 @@ MIT — see the LICENSE file. The "Licenses" page in the app, the file header an
 
 ## History / Changelog
 
+- 1.3.6 — 2026-10-22: fff-kit 1.1.2: PBKDF2 600,000 iterations, anti-clickjacking protection
 - 1.3.1 — 2026-10-19: the quick module switcher (`Ctrl/Cmd+K`, the 🔍 button) with the search in notes and journal, the automatic accessible names for controls without a label and the "last backup" hooks of the `.fff.json` copy (all described above) are present in the current version: they had been removed by mistake in an earlier cleanup and were restored, with their texts now in 8 languages. Fixed: script hashes added to the page's CSP next to `'unsafe-inline'` made the browser block every inline handler (`onclick=` etc.); the hashes were removed and the CSP keeps `script-src 'self' 'unsafe-inline' blob:` as before.
 
 - 1.1.0 — 2026-10-14: fuzzy search in notes and journal in `Ctrl/Cmd+K` (FFF.search); `.fff.json` copy through the shared modules (core, label, bundle, search); new tests: `tests/fff-r8.test.mjs`.

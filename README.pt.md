@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · **Português** · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versão:** 1.3.5 · **Última atualização:** 2026-10-22
+**Versão:** 1.3.6 · **Última atualização:** 2026-10-22
 
 Suíte pessoal de produtividade num único ficheiro HTML («quine»): notas, planeador, finanças, aprendizagem, ferramentas e muitos módulos, inspirada no YunoHost.
 
@@ -79,6 +79,7 @@ MIT — ver o ficheiro LICENSE. A página «Licenses» da aplicação, o cabeça
 
 ## Histórico / Changelog
 
+- 1.3.6 — 2026-10-22: fff-kit 1.1.2: PBKDF2 com 600.000 iterações, proteção anti-clickjacking
 - 1.3.1 — 2026-10-19: o seletor rápido de módulos (`Ctrl/Cmd+K`, o botão 🔍) com a pesquisa em notas e diário, os nomes acessíveis automáticos para controlos sem etiqueta e os ganchos de «última cópia de segurança» da cópia `.fff.json` (todos descritos acima) estão presentes na versão atual: tinham sido removidos por engano numa limpeza anterior e foram restaurados, com os seus textos agora em 8 línguas. Corrigido: os hashes de script acrescentados à CSP da página junto a `'unsafe-inline'` faziam o navegador bloquear todos os tratadores em linha (`onclick=` etc.); os hashes foram retirados e a CSP mantém `script-src 'self' 'unsafe-inline' blob:` como antes.
 
 - 1.1.0 — 2026-10-14: pesquisa aproximada em notas e diário com `Ctrl/Cmd+K` (FFF.search); cópia `.fff.json` através dos módulos comuns (core, label, bundle, search); novos testes: `tests/fff-r8.test.mjs`.

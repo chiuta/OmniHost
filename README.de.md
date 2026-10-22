@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · **Deutsch** · [Magyar](README.hu.md)
 
-**Version:** 1.3.5 · **Zuletzt aktualisiert:** 2026-10-22
+**Version:** 1.3.6 · **Zuletzt aktualisiert:** 2026-10-22
 
 Persönliche Produktivitätssuite in einer einzigen HTML-Datei („Quine“): Notizen, Planer, Finanzen, Lernen, Werkzeuge und viele Module, inspiriert von YunoHost.
 
@@ -79,6 +79,7 @@ MIT — siehe Datei LICENSE. Die Seite „Licenses“ der App, der Dateikopf und
 
 ## Verlauf / Changelog
 
+- 1.3.6 — 2026-10-22: fff-kit 1.1.2: PBKDF2 mit 600.000 Iterationen, Schutz vor Clickjacking
 - 1.3.1 — 2026-10-19: der schnelle Modul-Umschalter (`Ctrl/Cmd+K`, die Schaltfläche 🔍) mit der Suche in Notizen und Tagebuch, die automatischen zugänglichen Namen für Steuerelemente ohne Beschriftung und die Hooks „letzte Sicherung“ der `.fff.json`-Kopie (alle oben beschrieben) sind in der aktuellen Version vorhanden: Sie waren bei einer früheren Bereinigung versehentlich entfernt worden und wurden wiederhergestellt, ihre Texte jetzt in 8 Sprachen. Behoben: Skript-Hashes, die der CSP der Seite neben `'unsafe-inline'` hinzugefügt worden waren, ließen den Browser alle Inline-Handler (`onclick=` usw.) blockieren; die Hashes wurden entfernt, und die CSP behält wie zuvor `script-src 'self' 'unsafe-inline' blob:`.
 
 - 1.1.0 — 2026-10-14: unscharfe Suche in Notizen und Tagebuch mit `Ctrl/Cmd+K` (FFF.search); `.fff.json`-Kopie über die gemeinsamen Module (core, label, bundle, search); neue Tests: `tests/fff-r8.test.mjs`.

@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · **Français** · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version :** 1.3.5 · **Dernière mise à jour :** 2026-10-22
+**Version :** 1.3.6 · **Dernière mise à jour :** 2026-10-22
 
 Suite personnelle de productivité dans un seul fichier HTML (« quine ») : notes, planificateur, finances, apprentissage, outils et de nombreux modules, inspirée de YunoHost.
 
@@ -79,6 +79,7 @@ MIT — voir le fichier LICENSE. La page « Licenses » de l'application, l'en-t
 
 ## Historique / Changelog
 
+- 1.3.6 — 2026-10-22 : fff-kit 1.1.2 : PBKDF2 à 600 000 itérations, protection anti-clickjacking
 - 1.3.1 — 2026-10-19 : le sélecteur rapide de modules (`Ctrl/Cmd+K`, le bouton 🔍) avec la recherche dans les notes et le journal, les noms accessibles automatiques pour les contrôles sans étiquette et les crochets « dernière sauvegarde » de la copie `.fff.json` (tous décrits ci-dessus) sont présents dans la version actuelle : ils avaient été supprimés par erreur lors d'un nettoyage antérieur et ont été restaurés, leurs textes étant désormais en 8 langues. Corrigé : des empreintes de script ajoutées à la CSP de la page à côté de `'unsafe-inline'` faisaient bloquer par le navigateur tous les gestionnaires en ligne (`onclick=` etc.) ; les empreintes ont été retirées et la CSP garde `script-src 'self' 'unsafe-inline' blob:` comme avant.
 
 - 1.1.0 — 2026-10-14 : recherche approximative dans les notes et le journal avec `Ctrl/Cmd+K` (FFF.search) ; copie `.fff.json` via les modules communs (core, label, bundle, search) ; nouveaux tests : `tests/fff-r8.test.mjs`.

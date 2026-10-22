@@ -2,7 +2,7 @@
 
 [English](README.md) · **Română** · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versiune:** 1.3.5 · **Ultima actualizare:** 2026-10-22
+**Versiune:** 1.3.6 · **Ultima actualizare:** 2026-10-22
 
 Suită personală de productivitate într-un singur fișier HTML („quine"): notițe, planificator, finanțe, învățare, instrumente și multe module, inspirată de YunoHost.
 
@@ -79,6 +79,7 @@ MIT — vezi fișierul LICENSE. Pagina „Licenses” din aplicație, antetul fi
 
 ## Istoric / Changelog
 
+- 1.3.6 — 2026-10-22: fff-kit 1.1.2: PBKDF2 600 000 iterații, protecție anti-clickjacking
 - 1.3.1 — 2026-10-19: comutatorul rapid de module (`Ctrl/Cmd+K`, butonul 🔍) cu căutarea în notițe și jurnal, numele accesibile automate pentru controalele fără etichetă și cârligele „ultima copie de siguranță” ale copiei `.fff.json` (toate descrise mai sus) sunt prezente în versiunea curentă: fuseseră eliminate din greșeală într-o curățare anterioară și au fost restaurate, cu textele lor acum în 8 limbi. Corectat: hash-urile de script adăugate în CSP-ul paginii alături de `'unsafe-inline'` făceau browserul să blocheze toate handlerele inline (`onclick=` etc.); hash-urile au fost eliminate, iar CSP păstrează `script-src 'self' 'unsafe-inline' blob:` ca înainte.
 
 - 1.1.0 — 2026-10-14: căutare aproximativă în notițe și jurnal în `Ctrl/Cmd+K` (FFF.search); copie `.fff.json` prin modulele comune (core, label, bundle, search); teste noi: `tests/fff-r8.test.mjs`.
