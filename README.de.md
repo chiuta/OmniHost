@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · **Deutsch** · [Magyar](README.hu.md)
 
-**Version:** 1.3.1 · **Zuletzt aktualisiert:** 2026-10-19
+**Version:** 1.3.2 · **Zuletzt aktualisiert:** 2026-10-22
 
 Persönliche Produktivitätssuite in einer einzigen HTML-Datei („Quine“): Notizen, Planer, Finanzen, Lernen, Werkzeuge und viele Module, inspiriert von YunoHost.
 
@@ -109,3 +109,7 @@ Alexio — Alexandru-Ionuț Chiuță. Kontakt: alexio@trom.tf
 ## Zusammenfassung
 
 OmniHost ist eine persönliche „Quine“-Produktivitätssuite in einer Datei (Notizen, Planer, Finanzen, Lernen, Werkzeuge, Sicherheit und mehr; 30 Themes; Oberfläche in 71 Sprachen). Die Daten liegen in der HTML-Datei und in localStorage (`omnihost_db`); „Save“ lädt eine Kopie mit eingebetteten Daten herunter. Die Netzwerknutzung beschränkt sich auf Open-Meteo (Dashboard-Wetter, Opt-in), dictionaryapi.dev (Wörterbuch) und MyMemory (Übersetzung). MIT-Lizenz.
+
+### 1.3.2 — 2026-10-22
+- Der Hinweis in der Seitenleiste erscheint nun in nur einer Sprache, und die Willkommensaufgaben, der Demo-Aktivitätsfeed sowie einige Tooltips und Beschriftungen sind in die Oberflächensprachen übersetzt (die Zitattexte und übrigen Demodaten bleiben unverändert).
+
