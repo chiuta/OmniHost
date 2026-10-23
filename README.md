@@ -2,7 +2,7 @@
 
 **English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version:** 1.3.9 · **Last updated:** 2026-10-22
+**Version:** 1.3.10 · **Last updated:** 2026-10-23
 
 A personal productivity suite in a single HTML file ("quine"): notes, planner, finance, learning, tools and many modules, inspired by YunoHost.
 
@@ -78,6 +78,10 @@ MIT — see the LICENSE file. The "Licenses" page in the app, the file header an
 2026-10-10: verified in the browser (0 JS errors; at that date there was an automatic request to Open-Meteo, now removed). Fixed a stored XSS (the `priority` fields of tasks and `module` of the feed) that could be triggered through a malicious JSON import, plus accessibility (names for controls, contrast, Markdown lists). Round 2 (2026-10-11): the license unified to CC0 (the "Licenses" page, wiki, flashcard); the weather on the Dashboard is now opt-in (no automatic request at load); the static text "nothing is sent anywhere" in the About card was aligned with the one in i18n; the Stripe test keys replaced with a placeholder.
 
 ## History / Changelog
+
+### 1.3.10 — 2026-10-23
+
+- Accessibility: on touch screens (`pointer:coarse`) small buttons, selects, text fields and the sidebar navigation are at least 44×44 px (they were 23–36 px). No change on desktop.
 
 ### 1.3.9 — 2026-10-22
 
