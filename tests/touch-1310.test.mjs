@@ -1,4 +1,4 @@
-// Teste v1.3.10 (23 oct. 2026): ținte tactile ≥44 px pe ecrane tactile (pointer:coarse), fără depășire orizontală, fără schimbare pe desktop.
+// Teste v1.3.11 (23 oct. 2026): ținte tactile ≥44 px pe ecrane tactile (pointer:coarse), fără depășire orizontală, fără schimbare pe desktop.
 // Rulare: node tests/touch-1310.test.mjs  (Playwright din /opt/node-tools, Chromium local, rețea blocată)
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
