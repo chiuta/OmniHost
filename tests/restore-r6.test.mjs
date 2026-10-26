@@ -1,16 +1,19 @@
 // Test: comutatorul Ctrl+K (r6), căutarea în notițe (r8) și numele accesibile (tf-a11y-labels) în 8 limbi.
 // Rulare: node tests/restore-r6.test.mjs   (Playwright din /opt/node-tools, rețea blocată)
+// [fff-portable] axe-core: FFF_AXE / AXE_PATH, apoi pachetul `axe-core` (npm i -D axe-core). Dacă lipsește: undefined (testele cu axe pică cu mesaj clar).
+import {createRequire as __fffCR} from 'node:module';
+const __fffAxe = () => { try { return __fffCR(import.meta.url).resolve('axe-core/axe.min.js'); } catch { return undefined; } };
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createRequire} from 'node:module';
-const require = createRequire('/opt/node-tools/package.json');
+const require = createRequire(process.env.PW_ROOT || import.meta.url);
 const {chromium} = require('playwright');
 const FILE = 'file://' + path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'index.html');
-const AXE = fs.readFileSync(process.env.FFF_AXE || '/tmp/claude-0/-home-claude/78529928-3825-51c3-b9bd-0e81655ab6bc/scratchpad/sweep/node_modules/axe-core/axe.min.js', 'utf8');
+const AXE = fs.readFileSync(process.env.FFF_AXE || __fffAxe(), 'utf8');
 let ok = 0, bad = 0;
 const check = (n, c, x) => { if (c) { ok++; console.log('  ok   ' + n); } else { bad++; console.log('  FAIL ' + n + (x !== undefined ? '  → ' + JSON.stringify(x) : '')); } };
-const b = await chromium.launch({executablePath: '/opt/pw-browsers/chromium', args: ['--no-sandbox']});
+const b = await chromium.launch({executablePath: process.env.CHROMIUM_PATH || undefined, args: ['--no-sandbox']});
 const seen = {};
 for (const L of ['en', 'ro', 'fr', 'it', 'es', 'pt', 'de', 'hu']) {
   const ctx = await b.newContext({viewport: {width: 1280, height: 800}});

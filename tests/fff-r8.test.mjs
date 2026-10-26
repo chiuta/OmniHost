@@ -1,17 +1,24 @@
 // Teste r8 (14 oct. 2026): căutare aproximativă în notițe/jurnal (Ctrl+K), copie .fff.json (kit) cu import care are câștig de cauză, „ultima copie”.
 // Rulare: node tests/fff-r8.test.mjs  (Playwright din /opt/node-tools, Chromium local, rețea blocată)
+// [fff-portable] axe-core: FFF_AXE / AXE_PATH, apoi pachetul `axe-core` (npm i -D axe-core). Dacă lipsește: undefined (testele cu axe pică cu mesaj clar).
+import {createRequire as __fffCR} from 'node:module';
+const __fffAxe = () => { try { return __fffCR(import.meta.url).resolve('axe-core/axe.min.js'); } catch { return undefined; } };
+// [fff-portable] versiunea/data/kitul aplicației se citesc din app.json (nu mai sunt hard-codate în teste)
+import {readFileSync as __fffRF} from 'node:fs';
+const __FFF_APP = JSON.parse(__fffRF(new URL('../app.json', import.meta.url), 'utf8'));
+const __fffRe = (s) => String(s).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createRequire} from 'node:module';
-const require = createRequire('/opt/node-tools/package.json');
+const require = createRequire(process.env.PW_ROOT || import.meta.url);
 const {chromium} = require('playwright');
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const FILE = 'file://' + path.join(HERE, '..', 'index.html');
-const AXE = process.env.FFF_AXE || '/tmp/claude-0/-home-claude/78529928-3825-51c3-b9bd-0e81655ab6bc/scratchpad/sweep/node_modules/axe-core/axe.min.js';
+const AXE = process.env.FFF_AXE || __fffAxe();
 let ok = 0, bad = 0;
 const check = (n, c, x) => { if (c) { ok++; console.log('  ok   ' + n); } else { bad++; console.log('  FAIL ' + n + (x !== undefined ? '  → ' + JSON.stringify(x) : '')); } };
-const b = await chromium.launch({executablePath: '/opt/pw-browsers/chromium', args: ['--no-sandbox']});
+const b = await chromium.launch({executablePath: process.env.CHROMIUM_PATH || undefined, args: ['--no-sandbox']});
 async function open(w = 1280, h = 800, bypass = false) {
   const ctx = await b.newContext({viewport: {width: w, height: h}, bypassCSP: bypass, acceptDownloads: true, locale: 'en-US'});
   const net = [];
@@ -30,8 +37,8 @@ console.log('— metadate și kit');
 {
   const {ctx, page, errs, net} = await open();
   const m = await page.evaluate(() => ({v: document.querySelector('meta[name=application-version]').content, d: document.querySelector('meta[name=last-updated]').content, ft: document.getElementById('app-version').textContent, mods: document.querySelector('meta[name=fff-modules]')?.content, kit: !!(window.FFF && FFF.search && FFF.bundle && FFF.label)}));
-  check('versiune 1.3.11 și data', m.v === '1.3.11' && m.d === '2026-10-26', m);
-  check('footer cu versiune', /v 1\.3\.11 · 2026-10-26/.test(m.ft), m.ft);
+  check(`versiune ${__FFF_APP.version} și data`, m.v === __FFF_APP.version && m.d === __FFF_APP.updated, m);
+  check('footer cu versiune', new RegExp(String.raw`v ${__fffRe(__FFF_APP.version)} · ${__fffRe(__FFF_APP.updated)}`).test(m.ft), m.ft);
   check('module kit', m.mods === 'core,dialog,label,bundle,search' && m.kit, m);
   check('fără erori JS/CSP', errs.length === 0, errs);
   check('fără cereri de rețea la încărcare', net.length === 0, net);

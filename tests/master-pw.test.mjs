@@ -6,7 +6,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createRequire} from 'node:module';
-const require = createRequire('/opt/node-tools/package.json');
+const require = createRequire(process.env.PW_ROOT || import.meta.url);
 const {chromium} = require('playwright');
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(HERE, '..');
@@ -15,7 +15,7 @@ const SRC = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
 let ok = 0, bad = 0;
 const check = (n, c, x) => { if (c) { ok++; console.log('  ok   ' + n); } else { bad++; console.log('  FAIL ' + n + (x !== undefined ? '  → ' + JSON.stringify(x) : '')); } };
 const LANGS = ['en', 'ro', 'fr', 'it', 'es', 'pt', 'de', 'hu'];
-const b = await chromium.launch({executablePath: '/opt/pw-browsers/chromium', args: ['--no-sandbox']});
+const b = await chromium.launch({executablePath: process.env.CHROMIUM_PATH || undefined, args: ['--no-sandbox']});
 async function open(opts = {}) {
   const ctx = await b.newContext({viewport: {width: 1280, height: 800}, acceptDownloads: true, locale: 'en-US'});
   if (opts.ls) await ctx.addInitScript((v) => { try { if (!localStorage.getItem('omnihost_db')) localStorage.setItem('omnihost_db', v); } catch (e) {} }, opts.ls);
