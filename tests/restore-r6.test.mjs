@@ -2,7 +2,7 @@
 // Rulare: node tests/restore-r6.test.mjs   (Playwright din /opt/node-tools, rețea blocată)
 // [fff-portable] axe-core: FFF_AXE / AXE_PATH, apoi pachetul `axe-core` (npm i -D axe-core). Dacă lipsește: undefined (testele cu axe pică cu mesaj clar).
 import {createRequire as __fffCR} from 'node:module';
-const __fffAxe = () => { try { return __fffCR(import.meta.url).resolve('axe-core/axe.min.js'); } catch { return undefined; } };
+const __fffAxe = () => process.env.FFF_AXE || process.env.AXE_PATH || (() => { try { return __fffCR(import.meta.url).resolve('axe-core/axe.min.js'); } catch { return undefined; } })();
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
