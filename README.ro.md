@@ -2,7 +2,7 @@
 
 [English](README.md) · **Română** · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versiune:** 1.3.11 · **Ultima actualizare:** 2026-10-26
+**Versiune:** 2.0.0 · **Ultima actualizare:** 2026-10-26
 
 Suită personală de productivitate într-un singur fișier HTML („quine"): notițe, planificator, finanțe, învățare, instrumente și multe module, inspirată de YunoHost.
 
@@ -78,6 +78,11 @@ MIT — vezi fișierul LICENSE. Pagina „Licenses” din aplicație, antetul fi
 2026-10-10: verificat în browser (0 erori JS; la acea dată exista o cerere automată către Open-Meteo, acum eliminată). Corectat un XSS stocat (câmpurile `priority` din sarcini și `module` din feed) care putea fi declanșat printr-un import JSON malițios, plus accesibilitate (nume pentru controale, contrast, liste Markdown). Runda 2 (2026-10-11): licența unificată spre CC0 (pagina „Licenses", wiki, flashcard); vremea pe Dashboard este acum opt-in (nicio cerere automată la încărcare); textul static „nothing is sent anywhere" din cardul About a fost aliniat la cel din i18n; cheile de test Stripe înlocuite cu placeholder.
 
 ## Istoric / Changelog
+
+### 2.0.0 — 2026-10-26
+
+- **Spații de lucru** (butonul 🗂 din bara de sus): profiluri de module — Toate, Acasă, Birou, Școală — plus spații proprii salvate din vizibilitatea curentă (max. 12). Un spațiu doar ascunde paginile din bara laterală; nu șterge date, iar Dashboard și Setări rămân mereu vizibile. Corecție: modulele ascunse se reaplică acum și la pornire.
+- **Bara de comenzi Ctrl/Cmd+K** extinsă: comută spațiile de lucru și caută (cu toleranță la greșeli și fără diacritice) în datele locale din ~35 de colecții (sarcini, contacte, rețete, semne de carte, carduri etc.), nu doar în notițe și jurnal. Parolele, notițele securizate și datele de sănătate nu sunt incluse. Modulele din pagini ascunse nu mai apar în comutator.
 
 ### 1.3.9 — 2026-10-22
 

@@ -2,7 +2,7 @@
 
 **English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version:** 1.3.11 · **Last updated:** 2026-10-26
+**Version:** 2.0.0 · **Last updated:** 2026-10-26
 
 A personal productivity suite in a single HTML file ("quine"): notes, planner, finance, learning, tools and many modules, inspired by YunoHost.
 
@@ -78,6 +78,11 @@ MIT — see the LICENSE file. The "Licenses" page in the app, the file header an
 2026-10-10: verified in the browser (0 JS errors; at that date there was an automatic request to Open-Meteo, now removed). Fixed a stored XSS (the `priority` fields of tasks and `module` of the feed) that could be triggered through a malicious JSON import, plus accessibility (names for controls, contrast, Markdown lists). Round 2 (2026-10-11): the license unified to CC0 (the "Licenses" page, wiki, flashcard); the weather on the Dashboard is now opt-in (no automatic request at load); the static text "nothing is sent anywhere" in the About card was aligned with the one in i18n; the Stripe test keys replaced with a placeholder.
 
 ## History / Changelog
+
+### 2.0.0 — 2026-10-26
+
+- **Workspaces** (🗂 button in the top bar): module profiles — All, Home, Office, School — plus your own, saved from the current visibility (max 12). A workspace only hides sidebar pages; no data is deleted, and Dashboard and Settings always stay visible. Fix: hidden modules are now re-applied on startup.
+- **Extended Ctrl/Cmd+K command bar**: switches workspaces and searches (typo-tolerant, diacritic-insensitive) local data in ~35 collections, not only notes and journal. Passwords, secure notes and health data are excluded. Modules on hidden pages no longer appear in the jump list.
 
 ### 1.3.10 — 2026-10-23
 
