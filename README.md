@@ -2,7 +2,9 @@
 
 **English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version:** 2.0.0 · **Last updated:** 2026-10-26
+**Version:** 2.1.0 · **Last updated:** 2026-10-27
+
+**Status:** stable · **Offline:** needs internet for weather, dictionary and translation (only on request)
 
 A personal productivity suite in a single HTML file ("quine"): notes, planner, finance, learning, tools and many modules, inspired by YunoHost.
 
@@ -12,7 +14,7 @@ A personal productivity suite in a single HTML file ("quine"): notes, planner, f
 
 ## What it is
 
-OmniHost is an `index.html` file (~4 MB) that works as a complete personal application, with no server and no account. The data is kept in a JSON object inside the file (`omnihost-store`); the "Save" button downloads a copy of the app with all the data embedded. The interface shows "141 Modules", and the description on the page calls it "Single-File Sovereignty". The default interface is in English.
+OmniHost is an `index.html` file (~5.4 MB) that works as a complete personal application, with no server and no account. The data is kept in a JSON object inside the file (`omnihost-store`); the "Save" button downloads a copy of the app with all the data embedded. The interface shows "141 Modules", and the description on the page calls it "Single-File Sovereignty". The default interface is in English.
 
 ## Features
 
@@ -29,6 +31,10 @@ The sidebars group the modules (with the number of items shown in the app):
 - Interface in 71 languages, including Romanian.
 - Quick module switcher (`Ctrl/Cmd+K`).
 - JSON export / import, reset to "Clean Quine", source view and a "Licenses" page (credits for components, including jsQR and qrcodejs).
+- **Guided tour (2.1.0):** the 🧭 button in the top bar starts a 6-step tour (8 languages; English in the others): the grouped sidebar, workspaces, `Ctrl/Cmd+K`, theme and language, Save (where your data lives) and privacy. It is opt-in, only highlights existing controls, saves nothing and sends nothing; Esc or "Close tour" ends it; it works on phone-width screens (the dialog becomes a bottom sheet). It answers the concern that 141 modules can discourage a newcomer: start with the Dashboard and Notes, hide the rest with a workspace.
+- **Module search - already present, unchanged:** `Ctrl/Cmd+K` (or 🔍) searches the 141 modules by name and group (since 1.3.1) and, since 2.0.0, also your local data; *workspaces* (2.0.0) hide the pages you do not use.
+- **About the size (~5.4 MB), measured on 2.0.0 by line ranges (approximate):** about 3.8 MB is script (including the interface translations), 0.7 MB the translated wiki seed, 0.3 MB embedded fonts, 0.3 MB HTML of the pages, 0.1 MB your data and 0.1 MB the shared kit; `vendor/jsQR.js` (0.26 MB) is separate.
+- **Planned (not implemented): lazy loading of modules.** In a single-file "quine" every module lives in the same file, which is also what "Save" writes back; real lazy loading means splitting the code into separate files (or compressing and unpacking it at run time), which breaks the "one file, works offline from `file://`" rule or needs a new decompression layer that must be tested carefully. Until then, workspaces reduce what you see, not what the browser parses.
 
 ## New features (1.1.0)
 
@@ -78,6 +84,11 @@ MIT — see the LICENSE file. The "Licenses" page in the app, the file header an
 2026-10-10: verified in the browser (0 JS errors; at that date there was an automatic request to Open-Meteo, now removed). Fixed a stored XSS (the `priority` fields of tasks and `module` of the feed) that could be triggered through a malicious JSON import, plus accessibility (names for controls, contrast, Markdown lists). Round 2 (2026-10-11): the license unified to CC0 (the "Licenses" page, wiki, flashcard); the weather on the Dashboard is now opt-in (no automatic request at load); the static text "nothing is sent anywhere" in the About card was aligned with the one in i18n; the Stripe test keys replaced with a placeholder.
 
 ## History / Changelog
+
+### 2.1.0 — 2026-10-27
+- New guided tour (🧭 button, 6 steps, 8 languages), opt-in; test `tests/tour.test.mjs` (38 checks, desktop and 360 px).
+- README: module search and workspaces noted as already present; size breakdown (the "~4 MB" figure was outdated: the file is ~5.4 MB); lazy loading of modules documented as planned, with the reason.
+- Texts in 8 languages (fr/it/es/pt/de/hu are automatic, not natively verified).
 
 ### 2.0.0 — 2026-10-26
 

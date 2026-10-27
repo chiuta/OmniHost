@@ -2,8 +2,8 @@
   "schema": 1,
   "slug": "omnihost",
   "name": "OmniHost — Single-File Sovereignty",
-  "version": "2.0.0",
-  "updated": "2026-10-26",
+  "version": "2.1.0",
+  "updated": "2026-10-27",
   "description": "A personal productivity suite in a single HTML file: notes, planner, finance, learning, tools and many more modules, inspired by YunoHost.",
   "egress": [
     {
@@ -45,8 +45,8 @@
   "storageKeys": [
     "omnihost_db"
   ],
-  "sizeBytes": 5429945,
-  "sha256": "b694aa07725547f642927f0277ea1e7244e3db531ef8577f0e0dcf157c43e837",
+  "sizeBytes": 5445356,
+  "sha256": "6a8cecfcfdbaafb8cb7a491d3060836baa4d61135ee3c2af8a45058936115596",
   "csp": {
     "present": true,
     "directives": {
@@ -59,7 +59,7 @@
       "base-uri": "'self'",
       "form-action": "'self'",
       "worker-src": "'self' blob:",
-      "script-src": "'self' blob: sha256×6",
+      "script-src": "'self' blob: sha256×7",
       "connect-src": "'self' https://api.dictionaryapi.dev https://api.mymemory.translated.net https://geocoding-api.open-meteo.com https://api.open-meteo.com"
     },
     "scriptInline": "hash",

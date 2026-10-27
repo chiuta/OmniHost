@@ -2,7 +2,9 @@
 
 [English](README.md) · **Română** · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versiune:** 2.0.0 · **Ultima actualizare:** 2026-10-26
+**Versiune:** 2.1.0 · **Ultima actualizare:** 2026-10-27
+
+**Stare:** stabil · **Offline:** cere internet pentru vremea, dicționarul și traducerea (doar la cerere)
 
 Suită personală de productivitate într-un singur fișier HTML („quine"): notițe, planificator, finanțe, învățare, instrumente și multe module, inspirată de YunoHost.
 
@@ -12,7 +14,7 @@ Suită personală de productivitate într-un singur fișier HTML („quine"): no
 
 ## Ce este
 
-OmniHost este un fișier `index.html` (~4 MB) care funcționează ca aplicație personală completă, fără server și fără cont. Datele sunt păstrate într-un obiect JSON în interiorul fișierului (`omnihost-store`); butonul „Save" descarcă o copie a aplicației cu toate datele încorporate. Interfața afișează „141 Modules", iar descrierea din pagină îl numește „Single-File Sovereignty". Interfața implicită este în engleză.
+OmniHost este un fișier `index.html` (~5,4 MB) care funcționează ca aplicație personală completă, fără server și fără cont. Datele sunt păstrate într-un obiect JSON în interiorul fișierului (`omnihost-store`); butonul „Save" descarcă o copie a aplicației cu toate datele încorporate. Interfața afișează „141 Modules", iar descrierea din pagină îl numește „Single-File Sovereignty". Interfața implicită este în engleză.
 
 ## Funcții
 
@@ -29,6 +31,10 @@ Barele laterale grupează modulele (cu numărul de elemente afișat în aplicaț
 - Interfață în 71 de limbi, inclusiv română.
 - Comutator rapid de module (`Ctrl/Cmd+K`).
 - Export / import JSON, resetare la „Clean Quine", vizualizare a sursei și pagină „Licenses" (credite pentru componente, inclusiv jsQR și qrcodejs).
+- **Tur ghidat (2.1.0):** butonul 🧭 din bara de sus pornește un tur în 6 pași (8 limbi; engleză în celelalte): bara laterală grupată, spațiile de lucru, `Ctrl/Cmd+K`, tema și limba, Save (unde trăiesc datele tale) și confidențialitatea. Este opțional, doar evidențiază controale existente, nu salvează și nu trimite nimic; Esc sau „Închide turul” îl oprește; funcționează pe ecrane înguste (dialogul devine foaie jos). Răspunde îngrijorării că 141 de module pot descuraja un începător: începe cu Dashboard și Notițe, ascunde restul cu un spațiu de lucru.
+- **Căutare de module - deja existentă, neschimbată:** `Ctrl/Cmd+K` (sau 🔍) caută în cele 141 de module după nume și grup (din 1.3.1) și, din 2.0.0, și în datele tale locale; *spațiile de lucru* (2.0.0) ascund paginile pe care nu le folosești.
+- **Despre dimensiune (~5,4 MB), măsurată pe 2.0.0 pe intervale de linii (aproximativ):** circa 3,8 MB sunt script (inclusiv traducerile interfeței), 0,7 MB sămânța wiki tradusă, 0,3 MB fonturi încorporate, 0,3 MB HTML-ul paginilor, 0,1 MB datele tale și 0,1 MB kitul comun; `vendor/jsQR.js` (0,26 MB) este separat.
+- **Planificat (neimplementat): încărcarea leneșă a modulelor.** Într-un „quine” dintr-un singur fișier fiecare modul stă în același fișier, pe care îl rescrie și „Save”; încărcarea leneșă reală înseamnă împărțirea codului în fișiere separate (sau comprimarea lui și despachetarea la rulare), ceea ce încalcă regula „un singur fișier, funcționează offline din `file://`” sau cere un strat nou de decompresie, care trebuie testat atent. Până atunci, spațiile de lucru reduc ce vezi, nu ce parsează browserul.
 
 ## Funcții noi (1.1.0)
 
@@ -78,6 +84,11 @@ MIT — vezi fișierul LICENSE. Pagina „Licenses” din aplicație, antetul fi
 2026-10-10: verificat în browser (0 erori JS; la acea dată exista o cerere automată către Open-Meteo, acum eliminată). Corectat un XSS stocat (câmpurile `priority` din sarcini și `module` din feed) care putea fi declanșat printr-un import JSON malițios, plus accesibilitate (nume pentru controale, contrast, liste Markdown). Runda 2 (2026-10-11): licența unificată spre CC0 (pagina „Licenses", wiki, flashcard); vremea pe Dashboard este acum opt-in (nicio cerere automată la încărcare); textul static „nothing is sent anywhere" din cardul About a fost aliniat la cel din i18n; cheile de test Stripe înlocuite cu placeholder.
 
 ## Istoric / Changelog
+
+### 2.1.0 — 2026-10-27
+- Tur ghidat nou (butonul 🧭, 6 pași, 8 limbi), opțional; test `tests/tour.test.mjs` (38 de verificări, desktop și 360 px).
+- README: căutarea de module și spațiile de lucru notate ca existente; descompunerea dimensiunii („~4 MB” era depășit: fișierul are ~5,4 MB); încărcarea leneșă a modulelor documentată ca planificată, cu motivul.
+- Texte în 8 limbi (fr/it/es/pt/de/hu sunt automate, neverificate de vorbitori nativi).
 
 ### 2.0.0 — 2026-10-26
 
