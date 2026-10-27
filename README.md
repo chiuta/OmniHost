@@ -2,7 +2,7 @@
 
 **English** · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version:** 2.1.0 · **Last updated:** 2026-10-27
+**Version:** 2.2.0 · **Last updated:** 2026-10-27
 
 **Status:** stable · **Offline:** needs internet for weather, dictionary and translation (only on request)
 
@@ -14,7 +14,7 @@ A personal productivity suite in a single HTML file ("quine"): notes, planner, f
 
 ## What it is
 
-OmniHost is an `index.html` file (~5.4 MB) that works as a complete personal application, with no server and no account. The data is kept in a JSON object inside the file (`omnihost-store`); the "Save" button downloads a copy of the app with all the data embedded. The interface shows "141 Modules", and the description on the page calls it "Single-File Sovereignty". The default interface is in English.
+OmniHost is an `index.html` file (~4.0 MB) that works as a complete personal application, with no server and no account. The data is kept in a JSON object inside the file (`omnihost-store`); the "Save" button downloads a copy of the app with all the data embedded. The interface shows "141 Modules", and the description on the page calls it "Single-File Sovereignty". The default interface is in English.
 
 ## Features
 
@@ -33,8 +33,9 @@ The sidebars group the modules (with the number of items shown in the app):
 - JSON export / import, reset to "Clean Quine", source view and a "Licenses" page (credits for components, including jsQR and qrcodejs).
 - **Guided tour (2.1.0):** the 🧭 button in the top bar starts a 6-step tour (8 languages; English in the others): the grouped sidebar, workspaces, `Ctrl/Cmd+K`, theme and language, Save (where your data lives) and privacy. It is opt-in, only highlights existing controls, saves nothing and sends nothing; Esc or "Close tour" ends it; it works on phone-width screens (the dialog becomes a bottom sheet). It answers the concern that 141 modules can discourage a newcomer: start with the Dashboard and Notes, hide the rest with a workspace.
 - **Module search - already present, unchanged:** `Ctrl/Cmd+K` (or 🔍) searches the 141 modules by name and group (since 1.3.1) and, since 2.0.0, also your local data; *workspaces* (2.0.0) hide the pages you do not use.
-- **About the size (~5.4 MB), measured on 2.0.0 by line ranges (approximate):** about 3.8 MB is script (including the interface translations), 0.7 MB the translated wiki seed, 0.3 MB embedded fonts, 0.3 MB HTML of the pages, 0.1 MB your data and 0.1 MB the shared kit; `vendor/jsQR.js` (0.26 MB) is separate.
-- **Planned (not implemented): lazy loading of modules.** In a single-file "quine" every module lives in the same file, which is also what "Save" writes back; real lazy loading means splitting the code into separate files (or compressing and unpacking it at run time), which breaks the "one file, works offline from `file://`" rule or needs a new decompression layer that must be tested carefully. Until then, workspaces reduce what you see, not what the browser parses.
+- **About the size (~5.4 MB in 2.1.0, ~4.0 MB since 2.2.0), measured on 2.0.0 by line ranges (approximate):** about 3.8 MB is script (including the interface translations), 0.7 MB the translated wiki seed, 0.3 MB embedded fonts, 0.3 MB HTML of the pages, 0.1 MB your data and 0.1 MB the shared kit; `vendor/jsQR.js` (0.26 MB) is separate.
+- **Lazy loading of the interface language packs (2.2.0):** of the ~3.5 MB of script, about 2.3 MB (65%) was the interface translations of 72 languages, all parsed and executed on every start. Now only English (the fallback) is code; the other 71 languages are inert JSON blocks (`<script type="application/json" id="oh-lp-xx">`) in the same file, loaded and parsed on the first read of `I18N.xx` (for example when you switch the language), through a property getter, so no other code changed. Still **one file, offline, no network, no `eval`, no extra decompression layer**; "Save" keeps the blocks in the saved copy. Verified by `tests/lazy-i18n.test.mjs`: all 72 languages are identical to 2.1.0 (same keys, values and key order, checked by fingerprints computed on the 2.1.0 file), also in a copy saved with "Save". Measured (headless Chromium on a very loaded shared container, so only indicative; repeat on your machine): file 5.45 → 4.04 MB; JS heap at load 8.4 → 4.8 MB; median DOMContentLoaded roughly 9-9.5 s → 4-6.5 s in the same noisy conditions (script time ~1.4-1.8 s → ~1.2 s).
+- **Planned (not implemented): lazy loading of the module code itself.** The code of the ~140 modules (about 0.7 MB of functions), the dictionary of the interface extras (`UIX_DICT`, ~0.2 MB) and the translated wiki seed (0.7 MB of JSON) are still parsed at start. Splitting the module code in a single-file "quine" would need a loader for deferred blocks and a careful audit of the dependencies between modules (global state, inline-handler whitelist `OH_ACT`), which could not be done safely in this round. Workspaces still reduce what you see, not what the browser parses.
 
 ## New features (1.1.0)
 
@@ -84,6 +85,9 @@ MIT — see the LICENSE file. The "Licenses" page in the app, the file header an
 2026-10-10: verified in the browser (0 JS errors; at that date there was an automatic request to Open-Meteo, now removed). Fixed a stored XSS (the `priority` fields of tasks and `module` of the feed) that could be triggered through a malicious JSON import, plus accessibility (names for controls, contrast, Markdown lists). Round 2 (2026-10-11): the license unified to CC0 (the "Licenses" page, wiki, flashcard); the weather on the Dashboard is now opt-in (no automatic request at load); the static text "nothing is sent anywhere" in the About card was aligned with the one in i18n; the Stripe test keys replaced with a placeholder.
 
 ## History / Changelog
+
+### 2.2.0 — 2026-10-27
+- Lazy loading of the 71 non-English interface language packs (inert JSON blocks read on first use through a getter), keeping one file, offline; content identical to 2.1.0, checked by `tests/lazy-i18n.test.mjs` (16 checks). File 5.45 → 4.04 MB. Lazy loading of the module code itself remains planned.
 
 ### 2.1.0 — 2026-10-27
 - New guided tour (🧭 button, 6 steps, 8 languages), opt-in; test `tests/tour.test.mjs` (38 checks, desktop and 360 px).

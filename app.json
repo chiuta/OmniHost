@@ -2,7 +2,7 @@
   "schema": 1,
   "slug": "omnihost",
   "name": "OmniHost — Single-File Sovereignty",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "updated": "2026-10-27",
   "description": "A personal productivity suite in a single HTML file: notes, planner, finance, learning, tools and many more modules, inspired by YunoHost.",
   "egress": [
@@ -45,8 +45,8 @@
   "storageKeys": [
     "omnihost_db"
   ],
-  "sizeBytes": 5445356,
-  "sha256": "6a8cecfcfdbaafb8cb7a491d3060836baa4d61135ee3c2af8a45058936115596",
+  "sizeBytes": 4036319,
+  "sha256": "f882a78197f635e4d6ef949ff5810c3a3b55556fe1ad556e352ab4ec74f03a2a",
   "csp": {
     "present": true,
     "directives": {
