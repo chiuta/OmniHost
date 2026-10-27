@@ -2,7 +2,9 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · **Español** · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versión:** 2.0.0 · **Última actualización:** 2026-10-26
+**Versión:** 2.1.0 · **Última actualización:** 2026-10-27
+
+**Estado:** estable · **Offline:** requiere Internet para el tiempo, el diccionario y la traducción (solo a petición)
 
 Suite personal de productividad en un único archivo HTML («quine»): notas, planificador, finanzas, aprendizaje, herramientas y muchos módulos, inspirada en YunoHost.
 
@@ -12,7 +14,7 @@ Suite personal de productividad en un único archivo HTML («quine»): notas, pl
 
 ## Qué es
 
-OmniHost es un archivo `index.html` (~4 MB) que funciona como una aplicación personal completa, sin servidor y sin cuenta. Los datos se guardan en un objeto JSON dentro del archivo (`omnihost-store`); el botón «Save» descarga una copia de la aplicación con todos los datos incorporados. La interfaz muestra «141 Modules», y la descripción de la página lo llama «Single-File Sovereignty». La interfaz por defecto está en inglés.
+OmniHost es un archivo `index.html` (~5.4 MB) que funciona como una aplicación personal completa, sin servidor y sin cuenta. Los datos se guardan en un objeto JSON dentro del archivo (`omnihost-store`); el botón «Save» descarga una copia de la aplicación con todos los datos incorporados. La interfaz muestra «141 Modules», y la descripción de la página lo llama «Single-File Sovereignty». La interfaz por defecto está en inglés.
 
 ## Funciones
 

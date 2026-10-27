@@ -2,7 +2,9 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · **Magyar**
 
-**Verzió:** 2.0.0 · **Utolsó frissítés:** 2026-10-26
+**Verzió:** 2.1.0 · **Utolsó frissítés:** 2026-10-27
+
+**Állapot:** stabil · **Offline:** internet szükséges ehhez: az időjárás, a szótár és a fordítás (csak kérésre)
 
 Személyes termelékenységi csomag egyetlen HTML-fájlban („quine”): jegyzetek, tervező, pénzügyek, tanulás, eszközök és sok modul, a YunoHost ihletésével.
 
@@ -12,7 +14,7 @@ Személyes termelékenységi csomag egyetlen HTML-fájlban („quine”): jegyze
 
 ## Mi ez
 
-Az OmniHost egy `index.html` fájl (~4 MB), amely teljes értékű személyes alkalmazásként működik, szerver és fiók nélkül. Az adatok a fájlon belül egy JSON-objektumban tárolódnak (`omnihost-store`); a „Save” gomb letölti az alkalmazás egy másolatát az összes beágyazott adattal. A felület a „141 Modules” feliratot mutatja, az oldalon lévő leírás pedig „Single-File Sovereignty”-nek nevezi. Az alapértelmezett felület angol nyelvű.
+Az OmniHost egy `index.html` fájl (~5.4 MB), amely teljes értékű személyes alkalmazásként működik, szerver és fiók nélkül. Az adatok a fájlon belül egy JSON-objektumban tárolódnak (`omnihost-store`); a „Save” gomb letölti az alkalmazás egy másolatát az összes beágyazott adattal. A felület a „141 Modules” feliratot mutatja, az oldalon lévő leírás pedig „Single-File Sovereignty”-nek nevezi. Az alapértelmezett felület angol nyelvű.
 
 ## Funkciók
 

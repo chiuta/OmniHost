@@ -2,7 +2,9 @@
 
 [English](README.md) · [Română](README.ro.md) · **Français** · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Version :** 2.0.0 · **Dernière mise à jour :** 2026-10-26
+**Version :** 2.1.0 · **Dernière mise à jour :** 2026-10-27
+
+**Statut:** stable · **Offline:** nécessite Internet pour la météo, le dictionnaire et la traduction (uniquement à la demande)
 
 Suite personnelle de productivité dans un seul fichier HTML (« quine ») : notes, planificateur, finances, apprentissage, outils et de nombreux modules, inspirée de YunoHost.
 
@@ -12,7 +14,7 @@ Suite personnelle de productivité dans un seul fichier HTML (« quine ») : not
 
 ## Ce que c'est
 
-OmniHost est un fichier `index.html` (~4 Mo) qui fonctionne comme une application personnelle complète, sans serveur et sans compte. Les données sont conservées dans un objet JSON à l'intérieur du fichier (`omnihost-store`) ; le bouton « Save » télécharge une copie de l'application avec toutes les données intégrées. L'interface affiche « 141 Modules », et la description de la page l'appelle « Single-File Sovereignty ». L'interface par défaut est en anglais.
+OmniHost est un fichier `index.html` (~5,4 Mo) qui fonctionne comme une application personnelle complète, sans serveur et sans compte. Les données sont conservées dans un objet JSON à l'intérieur du fichier (`omnihost-store`) ; le bouton « Save » télécharge une copie de l'application avec toutes les données intégrées. L'interface affiche « 141 Modules », et la description de la page l'appelle « Single-File Sovereignty ». L'interface par défaut est en anglais.
 
 ## Fonctionnalités
 
