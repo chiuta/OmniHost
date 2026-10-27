@@ -2,7 +2,7 @@
 
 [English](README.md) · **Română** · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versiune:** 2.1.0 · **Ultima actualizare:** 2026-10-27
+**Versiune:** 2.2.0 · **Ultima actualizare:** 2026-10-27
 
 **Stare:** stabil · **Offline:** cere internet pentru vremea, dicționarul și traducerea (doar la cerere)
 
@@ -14,7 +14,7 @@ Suită personală de productivitate într-un singur fișier HTML („quine"): no
 
 ## Ce este
 
-OmniHost este un fișier `index.html` (~5,4 MB) care funcționează ca aplicație personală completă, fără server și fără cont. Datele sunt păstrate într-un obiect JSON în interiorul fișierului (`omnihost-store`); butonul „Save" descarcă o copie a aplicației cu toate datele încorporate. Interfața afișează „141 Modules", iar descrierea din pagină îl numește „Single-File Sovereignty". Interfața implicită este în engleză.
+OmniHost este un fișier `index.html` (~4,0 MB) care funcționează ca aplicație personală completă, fără server și fără cont. Datele sunt păstrate într-un obiect JSON în interiorul fișierului (`omnihost-store`); butonul „Save" descarcă o copie a aplicației cu toate datele încorporate. Interfața afișează „141 Modules", iar descrierea din pagină îl numește „Single-File Sovereignty". Interfața implicită este în engleză.
 
 ## Funcții
 
@@ -33,8 +33,9 @@ Barele laterale grupează modulele (cu numărul de elemente afișat în aplicaț
 - Export / import JSON, resetare la „Clean Quine", vizualizare a sursei și pagină „Licenses" (credite pentru componente, inclusiv jsQR și qrcodejs).
 - **Tur ghidat (2.1.0):** butonul 🧭 din bara de sus pornește un tur în 6 pași (8 limbi; engleză în celelalte): bara laterală grupată, spațiile de lucru, `Ctrl/Cmd+K`, tema și limba, Save (unde trăiesc datele tale) și confidențialitatea. Este opțional, doar evidențiază controale existente, nu salvează și nu trimite nimic; Esc sau „Închide turul” îl oprește; funcționează pe ecrane înguste (dialogul devine foaie jos). Răspunde îngrijorării că 141 de module pot descuraja un începător: începe cu Dashboard și Notițe, ascunde restul cu un spațiu de lucru.
 - **Căutare de module - deja existentă, neschimbată:** `Ctrl/Cmd+K` (sau 🔍) caută în cele 141 de module după nume și grup (din 1.3.1) și, din 2.0.0, și în datele tale locale; *spațiile de lucru* (2.0.0) ascund paginile pe care nu le folosești.
-- **Despre dimensiune (~5,4 MB), măsurată pe 2.0.0 pe intervale de linii (aproximativ):** circa 3,8 MB sunt script (inclusiv traducerile interfeței), 0,7 MB sămânța wiki tradusă, 0,3 MB fonturi încorporate, 0,3 MB HTML-ul paginilor, 0,1 MB datele tale și 0,1 MB kitul comun; `vendor/jsQR.js` (0,26 MB) este separat.
-- **Planificat (neimplementat): încărcarea leneșă a modulelor.** Într-un „quine” dintr-un singur fișier fiecare modul stă în același fișier, pe care îl rescrie și „Save”; încărcarea leneșă reală înseamnă împărțirea codului în fișiere separate (sau comprimarea lui și despachetarea la rulare), ceea ce încalcă regula „un singur fișier, funcționează offline din `file://`” sau cere un strat nou de decompresie, care trebuie testat atent. Până atunci, spațiile de lucru reduc ce vezi, nu ce parsează browserul.
+- **Despre dimensiune (~5,4 MB în 2.1.0, ~4,0 MB din 2.2.0), măsurată pe 2.0.0 pe intervale de linii (aproximativ):** circa 3,8 MB sunt script (inclusiv traducerile interfeței), 0,7 MB sămânța wiki tradusă, 0,3 MB fonturi încorporate, 0,3 MB HTML-ul paginilor, 0,1 MB datele tale și 0,1 MB kitul comun; `vendor/jsQR.js` (0,26 MB) este separat.
+- **Încărcare leneșă a pachetelor de limbă ale interfeței (2.2.0):** din cei ~3,5 MB de script, circa 2,3 MB (65%) erau traducerile interfeței în 72 de limbi, toate parsate și executate la fiecare pornire. Acum doar engleza (limba de rezervă) este cod; celelalte 71 de limbi sunt blocuri JSON inerte (`<script type="application/json" id="oh-lp-xx">`) în același fișier, încărcate și parsate la prima citire a lui `I18N.xx` (de exemplu când schimbi limba), printr-un getter de proprietate, deci niciun alt cod nu s-a schimbat. Rămâne **un singur fișier, offline, fără rețea, fără `eval`, fără strat de decompresie**; „Save” păstrează blocurile în copia salvată. Verificat de `tests/lazy-i18n.test.mjs`: toate cele 72 de limbi sunt identice cu 2.1.0 (aceleași chei, valori și ordine a cheilor, verificate prin amprente calculate pe fișierul 2.1.0), inclusiv într-o copie salvată cu „Save”. Măsurat (Chromium headless pe un container comun foarte încărcat, deci orientativ; repetă pe calculatorul tău): fișier 5,45 → 4,04 MB; heap JS la încărcare 8,4 → 4,8 MB; DOMContentLoaded median aproximativ 9-9,5 s → 4-6,5 s în aceleași condiții zgomotoase (timp de script ~1,4-1,8 s → ~1,2 s).
+- **Planificat (neimplementat): încărcarea leneșă a codului modulelor.** Codul celor ~140 de module (circa 0,7 MB de funcții), dicționarul extra-urilor de interfață (`UIX_DICT`, ~0,2 MB) și sămânța wiki tradusă (0,7 MB JSON) se parsează încă la pornire. Împărțirea codului modulelor într-un „quine” dintr-un singur fișier ar cere un încărcător pentru blocuri amânate și un audit atent al dependențelor dintre module (stare globală, lista albă de handlere `OH_ACT`), ceea ce nu s-a putut face în siguranță în această tură. Spațiile de lucru reduc în continuare ce vezi, nu ce parsează browserul.
 
 ## Funcții noi (1.1.0)
 
@@ -84,6 +85,9 @@ MIT — vezi fișierul LICENSE. Pagina „Licenses” din aplicație, antetul fi
 2026-10-10: verificat în browser (0 erori JS; la acea dată exista o cerere automată către Open-Meteo, acum eliminată). Corectat un XSS stocat (câmpurile `priority` din sarcini și `module` din feed) care putea fi declanșat printr-un import JSON malițios, plus accesibilitate (nume pentru controale, contrast, liste Markdown). Runda 2 (2026-10-11): licența unificată spre CC0 (pagina „Licenses", wiki, flashcard); vremea pe Dashboard este acum opt-in (nicio cerere automată la încărcare); textul static „nothing is sent anywhere" din cardul About a fost aliniat la cel din i18n; cheile de test Stripe înlocuite cu placeholder.
 
 ## Istoric / Changelog
+
+### 2.2.0 — 2026-10-27
+- Încărcare leneșă a celor 71 de pachete de limbă non-engleze (blocuri JSON inerte citite la prima folosire printr-un getter), păstrând un singur fișier, offline; conținut identic cu 2.1.0, verificat de `tests/lazy-i18n.test.mjs` (16 verificări). Fișier 5,45 → 4,04 MB. Încărcarea leneșă a codului modulelor rămâne planificată.
 
 ### 2.1.0 — 2026-10-27
 - Tur ghidat nou (butonul 🧭, 6 pași, 8 limbi), opțional; test `tests/tour.test.mjs` (38 de verificări, desktop și 360 px).

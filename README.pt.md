@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · **Português** · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
-**Versão:** 2.1.0 · **Última atualização:** 2026-10-27
+**Versão:** 2.2.0 · **Última atualização:** 2026-10-27
 
 **Estado:** estável · **Offline:** requer Internet para o tempo, o dicionário e a tradução (só a pedido)
 
@@ -14,7 +14,7 @@ Suíte pessoal de produtividade num único ficheiro HTML («quine»): notas, pla
 
 ## O que é
 
-O OmniHost é um ficheiro `index.html` (~5.4 MB) que funciona como uma aplicação pessoal completa, sem servidor e sem conta. Os dados são guardados num objeto JSON dentro do ficheiro (`omnihost-store`); o botão «Save» transfere uma cópia da aplicação com todos os dados incorporados. A interface apresenta «141 Modules», e a descrição da página chama-lhe «Single-File Sovereignty». A interface por omissão está em inglês.
+O OmniHost é um ficheiro `index.html` (~4.0 MB) que funciona como uma aplicação pessoal completa, sem servidor e sem conta. Os dados são guardados num objeto JSON dentro do ficheiro (`omnihost-store`); o botão «Save» transfere uma cópia da aplicação com todos os dados incorporados. A interface apresenta «141 Modules», e a descrição da página chama-lhe «Single-File Sovereignty». A interface por omissão está em inglês.
 
 ## Funcionalidades
 

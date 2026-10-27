@@ -2,7 +2,7 @@
 
 [English](README.md) · [Română](README.ro.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · **Deutsch** · [Magyar](README.hu.md)
 
-**Version:** 2.1.0 · **Zuletzt aktualisiert:** 2026-10-27
+**Version:** 2.2.0 · **Zuletzt aktualisiert:** 2026-10-27
 
 **Status:** stabil · **Offline:** braucht Internet für Wetter, Wörterbuch und Übersetzung (nur auf Anfrage)
 
@@ -14,7 +14,7 @@ Persönliche Produktivitätssuite in einer einzigen HTML-Datei („Quine“): No
 
 ## Was es ist
 
-OmniHost ist eine Datei `index.html` (~5.4 MB), die als vollständige persönliche Anwendung funktioniert, ohne Server und ohne Konto. Die Daten werden in einem JSON-Objekt innerhalb der Datei gehalten (`omnihost-store`); die Schaltfläche „Save“ lädt eine Kopie der App mit allen eingebetteten Daten herunter. Die Oberfläche zeigt „141 Modules“, und die Beschreibung auf der Seite nennt es „Single-File Sovereignty“. Die Standardoberfläche ist auf Englisch.
+OmniHost ist eine Datei `index.html` (~4.0 MB), die als vollständige persönliche Anwendung funktioniert, ohne Server und ohne Konto. Die Daten werden in einem JSON-Objekt innerhalb der Datei gehalten (`omnihost-store`); die Schaltfläche „Save“ lädt eine Kopie der App mit allen eingebetteten Daten herunter. Die Oberfläche zeigt „141 Modules“, und die Beschreibung auf der Seite nennt es „Single-File Sovereignty“. Die Standardoberfläche ist auf Englisch.
 
 ## Funktionen
 
