@@ -45,8 +45,8 @@
   "storageKeys": [
     "omnihost_db"
   ],
-  "sizeBytes": 4056461,
-  "sha256": "9d98c537001f8a019174d65b0b486785dad160411d16e6200f95cbe8857b1630",
+  "sizeBytes": 4056504,
+  "sha256": "be0a2356ea1aab814dc8706654b3c9a4d5de5a1e1cd58ed6d6f8f91d0e6648be",
   "csp": {
     "present": true,
     "directives": {
