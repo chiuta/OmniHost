@@ -45,8 +45,8 @@
   "storageKeys": [
     "omnihost_db"
   ],
-  "sizeBytes": 4056542,
-  "sha256": "6895c60fe396fd0c2b89e9d51a032b6881961f5f74d18621f28cf76475c63e0e",
+  "sizeBytes": 4196926,
+  "sha256": "2ec9608566bfea5a3e9f9dd1737b89cc3d69e2fdd0e570f3b7cf9f1ebc643521",
   "csp": {
     "present": true,
     "directives": {
@@ -87,6 +87,10 @@
       "dialog",
       "label",
       "bundle",
+      "qr",
+      "p2p",
+      "sync",
+      "history",
       "bridge",
       "search"
     ]
@@ -98,6 +102,10 @@
       "dialog",
       "label",
       "bundle",
+      "qr",
+      "p2p",
+      "sync",
+      "history",
       "bridge",
       "search"
     ]
