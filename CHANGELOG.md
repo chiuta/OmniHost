@@ -2,6 +2,12 @@
 
 Format: [SemVer](https://semver.org/lang/ro/) (MAJOR.MINOR.PATCH). Istoricul complet al versiunilor anterioare este în secțiunea „Istoric / Changelog” din [README.ro.md](README.ro.md).
 
+## 2.3.1 — 2026-11-02
+
+### Actualizat (surse, verificate la 2026-11-02)
+- Fluxuri RSS din marcajele de pornire: Reuters World (`feeds.reuters.com`, oprit din iunie 2020) -> fluxul Google News filtrat pe reuters.com/world; NASA Image of the Day -> `https://www.nasa.gov/feeds/iotd-feed/`; FOSDEM -> `https://fosdem.org/2027/rss.xml` (ediția 2027, 30–31 ianuarie 2027); FLOSS Weekly -> `https://hackaday.com/floss-weekly/` și `https://feeds.libsyn.com/499093/rss` (emisiunea a părăsit TWiT).
+- Verificate fără modificări: conturile de test Rebex (demo/password) și test.mosquitto.org (porturi 1883/8883/8080 etc.); limitele Open-Meteo (uz necomercial, sub 10 000 apeluri/zi) și MyMemory (5 000 de caractere/zi anonim).
+
 ## 2.3.0 — 2026-11-01
 
 - Corectat: adaptorul «Trimite la…» nu mai aruncă eroare când kitul FFF lipsește (gardian pe fiecare bloc; găsit de testul «fără kit» din CI).
