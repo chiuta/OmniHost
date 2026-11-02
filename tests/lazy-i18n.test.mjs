@@ -1,4 +1,4 @@
-// OmniHost 2.3.0 — încărcare leneșă a pachetelor de limbă (I18N). Conținutul tuturor celor 72 de limbi trebuie să fie IDENTIC cu cel din 2.1.0.
+// OmniHost 2.3.1 — încărcare leneșă a pachetelor de limbă (I18N). Conținutul tuturor celor 72 de limbi trebuie să fie IDENTIC cu cel din 2.1.0.
 // Amprentele de mai jos (sha256, primele 16 hex, ale JSON.stringify(I18N[limbă]), cu ordinea cheilor) au fost calculate pe fișierul 2.1.0, înainte de transformare.
 // Rulare: node tests/lazy-i18n.test.mjs
 import fs from 'node:fs';
