@@ -39,7 +39,7 @@ console.log('— metadate și kit');
   const m = await page.evaluate(() => ({v: document.querySelector('meta[name=application-version]').content, d: document.querySelector('meta[name=last-updated]').content, ft: document.getElementById('app-version').textContent, mods: document.querySelector('meta[name=fff-modules]')?.content, kit: !!(window.FFF && FFF.search && FFF.bundle && FFF.label)}));
   check(`versiune ${__FFF_APP.version} și data`, m.v === __FFF_APP.version && m.d === __FFF_APP.updated, m);
   check('footer cu versiune', new RegExp(String.raw`v ${__fffRe(__FFF_APP.version)} · ${__fffRe(__FFF_APP.updated)}`).test(m.ft), m.ft);
-  check('module kit', m.mods === 'core,dialog,label,bundle,qr,p2p,sync,history,bridge,search' && m.kit, m);
+  check('module kit', m.mods === 'core,dialog,exit,label,bundle,qr,p2p,sync,history,bridge,search' && m.kit, m);
   check('fără erori JS/CSP', errs.length === 0, errs);
   check('fără cereri de rețea la încărcare', net.length === 0, net);
 
