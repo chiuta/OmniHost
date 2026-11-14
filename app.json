@@ -40,13 +40,14 @@
     "geolocation",
     "clipboard",
     "localStorage",
-    "Web Crypto"
+    "Web Crypto",
+    "WebGL"
   ],
   "storageKeys": [
     "omnihost_db"
   ],
-  "sizeBytes": 4251036,
-  "sha256": "ee439b5095c9848d988157489f8cb91f28ce2506e74082c7cc5383678b2c6b93",
+  "sizeBytes": 4302675,
+  "sha256": "96210f4e678e8ff201603073ad81e2d3e4ed2a065a9683315a968e0fba6f0e9f",
   "csp": {
     "present": true,
     "directives": {
@@ -59,7 +60,7 @@
       "base-uri": "'self'",
       "form-action": "'self'",
       "worker-src": "'self' blob:",
-      "script-src": "'self' blob: sha256×8",
+      "script-src": "'self' blob: sha256×9",
       "connect-src": "'self' https://api.dictionaryapi.dev https://api.mymemory.translated.net https://geocoding-api.open-meteo.com https://api.open-meteo.com"
     },
     "scriptInline": "hash",
