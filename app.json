@@ -3,7 +3,7 @@
   "slug": "omnihost",
   "name": "OmniHost — Single-File Sovereignty",
   "version": "2.4.3",
-  "updated": "2026-11-20",
+  "updated": "2026-11-22",
   "description": "A personal productivity suite in a single HTML file: notes, planner, finance, learning, tools and many more modules, inspired by YunoHost.",
   "egress": [
     {
@@ -46,8 +46,8 @@
   "storageKeys": [
     "omnihost_db"
   ],
-  "sizeBytes": 4435256,
-  "sha256": "aac0cbab188ba9be65171e88f4222ef0597c203defba6e269dc7776dad7faf2b",
+  "sizeBytes": 4435316,
+  "sha256": "90f472c70cc5535af13745f4fb051d3c81a8272eb6a6e3f81ee2ee76856f8ae7",
   "csp": {
     "present": true,
     "directives": {
@@ -61,7 +61,8 @@
       "form-action": "'self'",
       "worker-src": "'self' blob:",
       "script-src": "'self' blob: sha256×11",
-      "connect-src": "'self' https://api.dictionaryapi.dev https://api.mymemory.translated.net https://geocoding-api.open-meteo.com https://api.open-meteo.com"
+      "connect-src": "'self' https://api.dictionaryapi.dev https://api.mymemory.translated.net https://geocoding-api.open-meteo.com https://api.open-meteo.com",
+      "upgrade-insecure-requests": "''"
     },
     "scriptInline": "hash",
     "connect": "'self' https://api.dictionaryapi.dev https://api.mymemory.translated.net https://geocoding-api.open-meteo.com https://api.open-meteo.com"
